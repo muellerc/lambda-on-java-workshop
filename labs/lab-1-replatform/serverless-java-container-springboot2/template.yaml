@@ -1,0 +1,34 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Globals:
+  Api:
+    EndpointConfiguration: REGIONAL
+    TracingEnabled: True
+
+Resources:
+  PetStoreFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.aws.samples.petclinic.CreatePetLambdaStreamHandler::handleRequest
+      Runtime: java8
+      CodeUri: target/1-spring-lambda-jar-with-dependencies.jar
+      MemorySize: 2048
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: '*'
+        - S3CrudPolicy:
+            BucketName: '*'
+      Timeout: 60
+      Tracing: Active
+      Events:
+        PetResource:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: any
+
+Outputs:
+  SpringLambdaPetClinicServiceURL:
+    Description: URL for application
+    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod'

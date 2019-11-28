@@ -1,0 +1,35 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+    <id>lambda-runtime</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <files>
+        <file>
+            <source>${project.basedir}${file.separator}bootstrap</source>
+            <outputDirectory>/</outputDirectory>
+            <destName>bootstrap</destName>
+            <fileMode>755</fileMode>
+        </file>
+        <file>
+            <source>${project.build.directory}${file.separator}server</source>
+            <outputDirectory>/</outputDirectory>
+            <destName>server</destName>
+            <fileMode>755</fileMode>
+        </file>
+<!--        <file>-->
+<!--            <source>${JAVA_HOME}${file.separator}jre${file.separator}lib${file.separator}amd64${file.separator}libsunec.so</source>-->
+<!--            <outputDirectory>/</outputDirectory>-->
+<!--            <destName>libsunec.so</destName>-->
+<!--            <fileMode>755</fileMode>-->
+<!--        </file>-->
+<!--        <file>-->
+<!--            <source>${JAVA_HOME}${file.separator}jre${file.separator}lib${file.separator}libsunec.dylib</source>-->
+<!--            <outputDirectory>/</outputDirectory>-->
+<!--            <destName>libsunec.dylib</destName>-->
+<!--            <fileMode>755</fileMode>-->
+<!--        </file>-->
+    </files>
+</assembly>

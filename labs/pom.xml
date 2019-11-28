@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.aws.samples.java.lambda</groupId>
+    <artifactId>labs</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <aws.java.sdkv1.version>1.11.683</aws.java.sdkv1.version>
+        <aws.java.sdkv2.version>2.10.25</aws.java.sdkv2.version>
+        <com.amazonaws.aws-lambda-java-core.version>1.2.0</com.amazonaws.aws-lambda-java-core.version>
+        <com.amazonaws.aws-lambda-java-events.version>2.2.7</com.amazonaws.aws-lambda-java-events.version>
+        <com.amazonaws.aws-xray-recorder-sdk.version>2.3.0</com.amazonaws.aws-xray-recorder-sdk.version>
+        <com.fasterxml.jackson.version>2.10.0</com.fasterxml.jackson.version>
+        <graalvm.version>19.3.0</graalvm.version>
+        <org.slf4j.version>1.7.28</org.slf4j.version>
+    </properties>
+
+    <modules>
+        <module>lab-1-replatform</module>
+        <module>lab-2-optimize</module>
+        <module>lab-3-rearchitect</module>
+    </modules>
+</project>
