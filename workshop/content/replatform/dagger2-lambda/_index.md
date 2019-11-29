@@ -1,6 +1,6 @@
 +++
-title = "SpringBoot to Dagger2"
-weight = 12
+title = "SDagger2 Lambda"
+weight = 14
 pre = ""
 +++
 

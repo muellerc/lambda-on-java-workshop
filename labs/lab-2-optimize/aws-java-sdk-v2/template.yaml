@@ -25,6 +25,8 @@ Resources:
         PetResource:
           Type: Api
           Properties:
+            EndpointConfiguration: REGIONAL
+            TracingEnabled: True
             Path: /pet
             Method: post
 

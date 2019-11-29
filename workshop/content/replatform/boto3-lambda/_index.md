@@ -1,6 +1,6 @@
 +++
-title = "Fargate to Lambda"
-weight = 11
+title = "Boto3 Lambda"
+weight = 13
 pre = ""
 +++
 

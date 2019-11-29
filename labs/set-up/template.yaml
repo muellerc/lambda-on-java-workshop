@@ -1,4 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
 
 Parameters:
   Cloud9CidrBlock:
@@ -8,7 +9,7 @@ Parameters:
   GitRepositoryURL:
     Description: The Git repository URL for the project we are cloning
     Type: String
-    Default: https://github.com/aws-samples/asynchronous-messaging-workshop.git
+    Default: https://github.com/muellerc/lambda-on-java-workshop.git
 
 Resources:
   VPC:
@@ -72,15 +73,44 @@ Resources:
     Type: AWS::Cloud9::EnvironmentEC2
     Properties:
       AutomaticStopTimeMinutes: 30
-      Description: Wild Rydes Async Messaging Workspace
-      InstanceType: t2.micro
-      Name: !Sub "WildRydesAsyncMessaging-${AWS::StackName}"
+      Description: Lambda On Java Workshop
+      InstanceType: m5.large
+      Name: !Sub "LambdaJavaWorkshop-${AWS::StackName}"
       Repositories:
-        - PathComponent: /wild-rydes-async-messaging
+        - PathComponent: /lambda-on-java-workshop
           RepositoryUrl: !Ref GitRepositoryURL
       SubnetId: !Ref PublicSubnet1
 
+  SAMArtifactBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Delete
+
+  PetsBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Delete
+
+  PetsTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      TableName: Pets
+      PrimaryKey:
+        Name: id
+        Type: String
+
 Outputs:
   Cloud9DevEnvUrl:
-    Description: Cloud9 Development Environment
+    Description: Our AWS Cloud9 Development Environment.
     Value: !Sub "https://${AWS::Region}.console.aws.amazon.com/cloud9/ide/${Cloud9}"
+  SAMArtifactBucket:
+    Description: The Amazon S3 bucket we use to upload our AWS Lambda function and SAM template to.
+    Value: !Ref SAMArtifactBucket
+  PetsBucket:
+    Description: The Amazon S3 bucket name where we store our pets medical records.
+    Value: !Ref PetsBucket
+    Export:
+      Name: PetsBucket
+  PetsTable:
+    Description: The Amazon DynamoDB table name where we store our pets.
+    Value: !Ref PetsTable
+    Export:
+      Name: PetsTable

@@ -1,6 +1,6 @@
 +++
-title = "Dagger2 to no DI framework"
-weight = 13
+title = "Springboot2 in Fargate"
+weight = 11
 pre = ""
 +++
 

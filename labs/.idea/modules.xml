@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/lab-2-optimize/aws-java-sdk-v2/aws-java-sdk-v2.iml" filepath="$PROJECT_DIR$/lab-2-optimize/aws-java-sdk-v2/aws-java-sdk-v2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab-3-rearchitect/graalvm/graalvm.iml" filepath="$PROJECT_DIR$/lab-3-rearchitect/graalvm/graalvm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab-1-replatform/lab-1-replatform.iml" filepath="$PROJECT_DIR$/lab-1-replatform/lab-1-replatform.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab-2-optimize/lab-2-optimize.iml" filepath="$PROJECT_DIR$/lab-2-optimize/lab-2-optimize.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab-3-rearchitect/lab-3-rearchitect.iml" filepath="$PROJECT_DIR$/lab-3-rearchitect/lab-3-rearchitect.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/labs.iml" filepath="$PROJECT_DIR$/.idea/labs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab-1-replatform/serverless-java-container-springboot2/serverless-java-container-springboot2.iml" filepath="$PROJECT_DIR$/lab-1-replatform/serverless-java-container-springboot2/serverless-java-container-springboot2.iml" />
     </modules>
   </component>
 </project>
