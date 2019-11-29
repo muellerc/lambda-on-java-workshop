@@ -14,11 +14,15 @@ Resources:
       Runtime: java8
       CodeUri: target/app.jar
       MemorySize: 2048
+      Environment:
+        Variables:
+          TABLE_NAME: !ImportValue PetsTable
+          BUCKET_NAME: !ImportValue PetsBucket
       Policies:
         - DynamoDBCrudPolicy:
-            TableName: '*'
+            TableName: !ImportValue PetsTable
         - S3CrudPolicy:
-            BucketName: '*'
+            BucketName: !ImportValue PetsBucket
       Timeout: 60
       Tracing: Active
       Events:

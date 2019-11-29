@@ -9,9 +9,11 @@ import java.util.UUID;
 public class MedicalRecordStore {
 
     private S3Client s3Client;
+    private String bucket;
 
-    public MedicalRecordStore(S3Client s3Client) {
+    public MedicalRecordStore(S3Client s3Client, String bucket) {
         this.s3Client = s3Client;
+        this.bucket = bucket;
     }
 
     public MedicalRecord save(MedicalRecord medicalRecord) {
@@ -19,7 +21,7 @@ public class MedicalRecordStore {
 
         s3Client.putObject(
                 PutObjectRequest.builder()
-                    .bucket("cmr-lambda")
+                    .bucket(bucket)
                     .key("medical-record/" + medicalRecord.getId())
                     .build(),
                 RequestBody.fromString(medicalRecord.getRecord()));

@@ -34,6 +34,9 @@ Resources:
             Method: post
 
 Outputs:
-  GraalVMNativeImagePetsApiServiceURL:
+  PetsApiServiceURL:
     Description: The Serverless Rest Api URL for our pets API to add a new pet
     Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/pet'
+  CreatePetLambdaHandlerFunction:
+    Description: The ARN for our CreatePetLambdaHandler function
+    Value: !GetAtt CreatePetLambdaHandlerFunction.Arn

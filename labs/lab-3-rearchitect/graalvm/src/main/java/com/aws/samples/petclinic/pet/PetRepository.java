@@ -10,14 +10,16 @@ import java.util.Map;
 public class PetRepository {
 
     private DynamoDbClient dynamoDbClient;
+    private String table;
 
-    public PetRepository(DynamoDbClient dynamoDbClient) {
+    public PetRepository(DynamoDbClient dynamoDbClient, String table) {
         this.dynamoDbClient = dynamoDbClient;
+        this.table = table;
     }
 
     public Pet save(Pet pet) {
         dynamoDbClient.putItem(PutItemRequest.builder()
-                .tableName("Pets")
+                .tableName(table)
                 .item(asItem(pet))
                 .build());
 

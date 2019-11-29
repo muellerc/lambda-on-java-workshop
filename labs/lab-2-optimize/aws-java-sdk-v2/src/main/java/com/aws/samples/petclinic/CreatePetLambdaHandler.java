@@ -24,6 +24,10 @@ public class CreatePetLambdaHandler implements RequestHandler<APIGatewayV2ProxyR
     public CreatePetLambdaHandler() {
         objectMapper = new ObjectMapper();
 
+        String table = System.getenv("TABLE_NAME");
+
+        String bucket = System.getenv("BUCKET_NAME");
+
         Region regions = Region.of(System.getenv("AWS_REGION"));
 
         AwsCredentialsProvider credentialsProvider = DefaultCredentialsProvider.create();
@@ -37,7 +41,7 @@ public class CreatePetLambdaHandler implements RequestHandler<APIGatewayV2ProxyR
                 )
                 .build();
 
-        PetRepository repository = new PetRepository(dynamoDbClient);
+        PetRepository repository = new PetRepository(dynamoDbClient, table);
 
         S3Client s3Client = S3Client.builder()
                 .credentialsProvider(credentialsProvider)
@@ -48,7 +52,7 @@ public class CreatePetLambdaHandler implements RequestHandler<APIGatewayV2ProxyR
                 )
                 .build();
 
-        MedicalRecordStore medicalRecordStore = new MedicalRecordStore(s3Client);
+        MedicalRecordStore medicalRecordStore = new MedicalRecordStore(s3Client, bucket);
 
         service = new PetService(repository, medicalRecordStore);
     }

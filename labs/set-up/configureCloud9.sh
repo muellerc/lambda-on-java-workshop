@@ -59,3 +59,15 @@ export SAM_ARTIFACT_BUCKET=$(aws cloudformation describe-stacks \
     --stack-name lambda-java-workshop \
     --query 'Stacks[].Outputs[?OutputKey==`SAMArtifactBucket`].OutputValue' \
     --output text)
+
+echo "Make the pet bucket available as ENV variable"
+export PETS_BUCKET=$(aws cloudformation describe-stacks \
+    --stack-name lambda-java-workshop \
+    --query 'Stacks[].Outputs[?OutputKey==`PetsBucket`].OutputValue' \
+    --output text)
+
+echo "Make the pet table available as ENV variable"
+export PETS_TABLE=$(aws cloudformation describe-stacks \
+    --stack-name lambda-java-workshop \
+    --query 'Stacks[].Outputs[?OutputKey==`PetsTable`].OutputValue' \
+    --output text)

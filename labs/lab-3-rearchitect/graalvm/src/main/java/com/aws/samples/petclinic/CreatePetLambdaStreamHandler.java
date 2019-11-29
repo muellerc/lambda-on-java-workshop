@@ -22,9 +22,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URI;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 
 public class CreatePetLambdaStreamHandler implements RequestStreamHandler {
 
@@ -34,6 +31,10 @@ public class CreatePetLambdaStreamHandler implements RequestStreamHandler {
 
     public CreatePetLambdaStreamHandler() {
         try {
+            String table = System.getenv("TABLE_NAME");
+
+            String bucket = System.getenv("BUCKET_NAME");
+
             Region region = Region.of(System.getenv("AWS_REGION"));
 
             AwsCredentialsProvider credentialsProvider = EnvironmentVariableCredentialsProvider.create();
@@ -52,7 +53,7 @@ public class CreatePetLambdaStreamHandler implements RequestStreamHandler {
                                     .build())
                     .build();
 
-            PetRepository repository = new PetRepository(dynamoDbClient);
+            PetRepository repository = new PetRepository(dynamoDbClient, table);
 
             SdkHttpClient s3sdkHttpClient = UrlConnectionHttpClient.builder().build();
 
@@ -68,7 +69,7 @@ public class CreatePetLambdaStreamHandler implements RequestStreamHandler {
                                     .build())
                     .build();
 
-            MedicalRecordStore medicalRecordStore = new MedicalRecordStore(s3Client);
+            MedicalRecordStore medicalRecordStore = new MedicalRecordStore(s3Client, bucket);
 
             service = new PetService(repository, medicalRecordStore);
         } catch (Exception e) {
