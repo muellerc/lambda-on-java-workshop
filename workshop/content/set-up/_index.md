@@ -45,8 +45,8 @@ The **Outputs** tab in your CloudFormation console exposes the **Cloud9DevEnvUrl
 In your AWS Cloud9 IDE, you can close the welcome tab. In the left environment navigation window, you can see the project **lambda-on-java-workshop** we have already checked out for you from Github. This project also contains a shell script to update the OS and to install additional tools like GraalVM, Scala and Gatling. Run the following command in the **bash** window (at the bottom of the AWS Cloud9 IDE):
 
 {{< highlight bash >}}
-chmod +x lambda-on-java-workshop/labs/set-up/configureCloud9.sh 
-./lambda-on-java-workshop/labs/set-up/configureCloud9.sh
+chmod +x ~/environment/lambda-on-java-workshop/labs/set-up/configureCloud9.sh 
+~/environment/lambda-on-java-workshop/labs/set-up/configureCloud9.sh
 {{< /highlight >}}
 
 It takes usually ~ 3 minutes, until the OS is updated and all tools are installed.
@@ -54,7 +54,7 @@ It takes usually ~ 3 minutes, until the OS is updated and all tools are installe
 Now we continue with building all service variants, by running the following command in the AWS Cloud9 IDE bash window:
 
 {{< highlight bash >}}
-cd lambda-on-java-workshop/labs
+cd ~/environment/lambda-on-java-workshop/labs
 chmod +x ./mvnw
 ./mvnw clean package
 {{< /highlight >}}
