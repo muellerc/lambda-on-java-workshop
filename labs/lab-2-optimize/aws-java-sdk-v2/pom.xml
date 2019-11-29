@@ -41,10 +41,16 @@
       <artifactId>aws-lambda-java-events</artifactId>
       <version>${com.amazonaws.aws-lambda-java-events.version}</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>${org.slf4j.version}</version>
+    </dependency>
   </dependencies>
 
   <build>
-    <finalName>${project.artifactId}</finalName>
+    <finalName>${artifactId}</finalName>
 
     <plugins>
       <plugin>
@@ -57,9 +63,16 @@
         <artifactId>maven-assembly-plugin</artifactId>
         <version>3.1.0</version>
         <configuration>
+          <finalName>app</finalName>
+          <appendAssemblyId>false</appendAssemblyId>
           <descriptorRefs>
             <descriptorRef>jar-with-dependencies</descriptorRef>
           </descriptorRefs>
+          <archive>
+            <manifest>
+              <mainClass>com.aws.samples.petclinic.Main</mainClass>
+            </manifest>
+          </archive>
         </configuration>
         <executions>
           <execution>

@@ -11,11 +11,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.graalvm.sdk:graal-sdk:19.3.0" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-simple:1.7.28" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.28" level="project" />
     <orderEntry type="library" name="Maven: com.amazonaws:aws-lambda-java-core:1.2.0" level="project" />
-    <orderEntry type="library" name="Maven: com.amazonaws:aws-lambda-java-events:2.2.7" level="project" />
-    <orderEntry type="library" name="Maven: joda-time:joda-time:2.6" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.10.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.10.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.10.0" level="project" />
@@ -36,5 +32,7 @@
     <orderEntry type="library" name="Maven: software.amazon.awssdk:aws-xml-protocol:2.10.25" level="project" />
     <orderEntry type="library" name="Maven: software.amazon.awssdk:aws-query-protocol:2.10.25" level="project" />
     <orderEntry type="library" name="Maven: software.amazon.awssdk:url-connection-client:2.10.25" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-simple:1.7.28" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.28" level="project" />
   </component>
 </module>

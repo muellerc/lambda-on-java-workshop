@@ -53,8 +53,6 @@ rm -rf gatling-charts-highcharts-bundle-3.3.1-bundle.zip
 echo 'export GATLING_HOME=/home/ec2-user/environment/gatling-charts-highcharts-bundle-3.3.1' >> ~/.bashrc
 echo 'export PATH="$PATH:$GATLING_HOME/bin"' >> ~/.bashrc
 
-source ~/.bashrc
-
 # Make the SAM artifact bucket available as ENV variable
 echo "Make the SAM artifact bucket available as ENV variable"
 export SAM_ARTIFACT_BUCKET=$(aws cloudformation describe-stacks \

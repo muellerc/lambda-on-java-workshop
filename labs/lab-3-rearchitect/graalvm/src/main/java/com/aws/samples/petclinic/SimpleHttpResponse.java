@@ -1,4 +1,4 @@
-package cmr;
+package com.aws.samples.petclinic;
 
 import java.util.List;
 import java.util.Map;

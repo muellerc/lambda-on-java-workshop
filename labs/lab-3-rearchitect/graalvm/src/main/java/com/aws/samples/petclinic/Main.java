@@ -1,17 +1,8 @@
-package cmr;
+package com.aws.samples.petclinic;
 
-import com.amazonaws.services.lambda.runtime.events.APIGatewayV2ProxyRequestEvent;
-
-import javax.net.ssl.HttpsURLConnection;
-import java.io.BufferedReader;
+import com.amazonaws.services.lambda.runtime.Context;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.InputStreamReader;
-import java.lang.reflect.InvocationTargetException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 
 public class Main {
 
@@ -142,13 +133,12 @@ public class Main {
             "}";
 
     public static void main(String[] args) throws Exception {
+        CreatePetLambdaStreamHandler handler = new CreatePetLambdaStreamHandler();
+
         ByteArrayInputStream input = new ByteArrayInputStream(API_GATEWAY_EVENT.getBytes("UTF-8"));
         ByteArrayOutputStream output = new ByteArrayOutputStream();
-        new CreatePetLambdaStreamHandler().handleRequest(input, output, null);
-        System.out.println(output.toString("UTF-8"));
+        Context context = null;
 
-//        APIGatewayV2ProxyRequestEvent event = new APIGatewayV2ProxyRequestEvent();
-//        event.setBody(PET_RECORD);
-//        System.out.println(new CreatePetLambdaHandler().handleRequest(event, null));
+        handler.handleRequest(input, output, null);
     }
 }

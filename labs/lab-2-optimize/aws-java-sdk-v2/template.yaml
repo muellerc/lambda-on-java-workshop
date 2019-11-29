@@ -7,12 +7,12 @@ Globals:
     TracingEnabled: True
 
 Resources:
-  PetStoreFunction:
+  CreatePetLambdaHandlerFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: com.aws.samples.petclinic.CreatePetLambdaHandler::handleRequest
       Runtime: java8
-      CodeUri: target/4a-using-sdk-v2-jar-with-dependencies.jar
+      CodeUri: target/app.jar
       MemorySize: 2048
       Policies:
         - DynamoDBCrudPolicy:
@@ -25,12 +25,13 @@ Resources:
         PetResource:
           Type: Api
           Properties:
-            EndpointConfiguration: REGIONAL
-            TracingEnabled: True
             Path: /pet
             Method: post
 
 Outputs:
-  OptimizedLambdaJavaSdkV2PetClinicServiceURL:
+  PetsApiServiceURL:
     Description: URL for application
     Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod'
+  CreatePetLambdaHandlerFunction:
+    Description: The ARN for our CreatePetLambdaHandler function
+    Value: !GetAtt CreatePetLambdaHandlerFunction.Arn

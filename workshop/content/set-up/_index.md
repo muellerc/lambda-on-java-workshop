@@ -47,6 +47,7 @@ In your AWS Cloud9 IDE, you can close the welcome tab. In the left environment n
 {{< highlight bash >}}
 chmod +x ~/environment/lambda-on-java-workshop/labs/set-up/configureCloud9.sh 
 ~/environment/lambda-on-java-workshop/labs/set-up/configureCloud9.sh
+source ~/.bashrc
 {{< /highlight >}}
 
 It takes usually ~ 3 minutes, until the OS is updated and all tools are installed.

@@ -1,15 +1,9 @@
-package cmr;
-
-import software.amazon.awssdk.utils.StringInputStream;
+package com.aws.samples.petclinic;
 
 import java.io.*;
-import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLClassLoader;
 import java.text.MessageFormat;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

@@ -2,14 +2,14 @@ import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import scala.concurrent.duration._
 
-class OptimizedLambdaSdkV2LoadTest extends Simulation {
+class LoadTest extends Simulation {
 
   val httpProtocol = http
-    .baseUrl("https://txjygkxoi6.execute-api.eu-central-1.amazonaws.com/Prod")
+    .baseUrl(System.getProperty("BASE_URL"))
     .acceptHeader("application/json")
     .doNotTrackHeader("1")
 
-  val scn = scenario("OptimizedLambdaSdkV2LoadTest")
+  val scn = scenario("LoadTest")
     .exec(
       http("add_pet")
         .post("/pet")

@@ -1,4 +1,4 @@
-package cmr;
+package com.aws.samples.petclinic.pet;
 
 import java.io.Serializable;
 

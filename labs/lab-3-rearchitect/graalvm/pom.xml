@@ -22,21 +22,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>${org.slf4j.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-lambda-java-core</artifactId>
             <version>${com.amazonaws.aws-lambda-java-core.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-lambda-java-events</artifactId>
-            <version>${com.amazonaws.aws-lambda-java-events.version}</version>
         </dependency>
 
         <dependency>
@@ -84,6 +72,12 @@
             <artifactId>url-connection-client</artifactId>
             <version>${aws.java.sdkv2.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${org.slf4j.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -91,10 +85,6 @@
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
             </plugin>
 
             <plugin>
@@ -129,7 +119,7 @@
                     </descriptors>
                     <archive>
                         <manifest>
-                            <mainClass>cmr.CustomRuntime</mainClass>
+                            <mainClass>com.aws.samples.petclinic.CustomRuntime</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
