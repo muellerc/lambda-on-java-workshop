@@ -7,19 +7,24 @@ Globals:
     TracingEnabled: True
 
 Resources:
-  PetStoreFunction:
+  CreatePetLambdaHandlerFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: com.aws.samples.petclinic.CreatePetLambdaStreamHandler::handleRequest
       Runtime: java8
-      CodeUri: target/1-spring-lambda-jar-with-dependencies.jar
+      CodeUri: target/app.jar
       MemorySize: 2048
+      Environment:
+        Variables:
+          DISABLE_SIGNAL_HANDLERS: true
+          TABLE_NAME: !ImportValue PetsTable
+          BUCKET_NAME: !ImportValue PetsBucket
       Policies:
         - DynamoDBCrudPolicy:
-            TableName: '*'
+            TableName: !ImportValue PetsTable
         - S3CrudPolicy:
-            BucketName: '*'
-      Timeout: 60
+            BucketName: !ImportValue PetsBucket
+      Timeout: 30
       Tracing: Active
       Events:
         PetResource:
@@ -29,6 +34,9 @@ Resources:
             Method: any
 
 Outputs:
-  SpringLambdaPetClinicServiceURL:
-    Description: URL for application
+  PetsApiServiceURL:
+    Description: The Serverless Rest Api URL for our pets API to add a new pet
     Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod'
+  CreatePetLambdaHandlerFunction:
+    Description: The ARN for our CreatePetLambdaHandler function
+    Value: !GetAtt CreatePetLambdaHandlerFunction.Arn

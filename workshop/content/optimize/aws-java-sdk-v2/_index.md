@@ -86,14 +86,13 @@ export FUNCTION_ARN=$(aws cloudformation describe-stacks \
 
 ```bash
 export JAVA_OPTS="-DBASE_URL=$ENDPOINT"
-for i in {1..10}; do aws lambda update-function-configuration --function-name $FUNCTION_ARN --environment "Variables={KeyName1=KeyValue$i}"; gatling.sh --simulations-folder lab-2-optimize/aws-java-sdk-v2/src/test/scala --simulation LoadTest --run-description "aws-java-sdk-v2-run-$i"; done
+for i in {1..10}; do aws lambda update-function-configuration --function-name $FUNCTION_ARN --environment "Variables={TABLE_NAME=$PETS_TABLE,BUCKET_NAME=$PETS_BUCKET,KeyName1=KeyValue$i}"; gatling.sh --simulations-folder lab-2-optimize/aws-java-sdk-v2/src/test/scala --simulation LoadTest --run-description "aws-java-sdk-v2-run-$i"; done
 ```
 
 ## Run the Cold-Start Tests
 
 ```bash
-export JAVA_OPTS="-DBASE_URL=$ENDPOINT"
-for i in {1..10}; do aws lambda update-function-configuration --function-name $FUNCTION_ARN --environment "Variables={KeyName1=KeyValue$i}"; curl -i -X POST -d '{"name": "Max", "type": "dog", "birthday": "2010-11-03", "medicalRecord": "bla bla bla"}' $ENDPOINT/pet; done
+for i in {1..10}; do aws lambda update-function-configuration --function-name $FUNCTION_ARN --environment "Variables={TABLE_NAME=$PETS_TABLE,BUCKET_NAME=$PETS_BUCKET,KeyName1=KeyValue$i}"; curl -i -X POST -d '{"name": "Max", "type": "dog", "birthday": "2010-11-03", "medicalRecord": "bla bla bla"}' $ENDPOINT/pet; done
 ```
 
 ## Result Overview

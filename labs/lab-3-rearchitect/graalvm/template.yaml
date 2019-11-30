@@ -7,7 +7,7 @@ Globals:
     TracingEnabled: True
 
 Resources:
-  PetStoreFunction:
+  CreatePetLambdaHandlerFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: does.not::matter
@@ -36,7 +36,7 @@ Resources:
 Outputs:
   PetsApiServiceURL:
     Description: The Serverless Rest Api URL for our pets API to add a new pet
-    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/pet'
+    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod'
   CreatePetLambdaHandlerFunction:
     Description: The ARN for our CreatePetLambdaHandler function
     Value: !GetAtt CreatePetLambdaHandlerFunction.Arn

@@ -74,6 +74,12 @@
       <version>${com.amazonaws.aws-lambda-java-core.version}</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>${org.slf4j.version}</version>
+    </dependency>
+
     <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-xray-recorder-sdk-core -->
     <dependency>
       <groupId>com.amazonaws</groupId>
@@ -104,6 +110,8 @@
         <artifactId>maven-assembly-plugin</artifactId>
         <version>3.1.0</version>
         <configuration>
+          <finalName>app</finalName>
+          <appendAssemblyId>false</appendAssemblyId>
           <descriptorRefs>
             <descriptorRef>jar-with-dependencies</descriptorRef>
           </descriptorRefs>

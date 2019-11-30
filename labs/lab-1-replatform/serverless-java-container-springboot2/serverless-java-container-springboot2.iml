@@ -118,6 +118,7 @@
     <orderEntry type="library" name="Maven: org.jetbrains:annotations:17.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.29" level="project" />
     <orderEntry type="library" name="Maven: com.amazonaws:aws-lambda-java-core:1.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-simple:1.7.28" level="project" />
     <orderEntry type="library" name="Maven: com.amazonaws:aws-xray-recorder-sdk-core:2.3.0" level="project" />
     <orderEntry type="library" name="Maven: com.amazonaws:aws-java-sdk-xray:1.11.398" level="project" />
     <orderEntry type="library" name="Maven: com.amazonaws:aws-xray-recorder-sdk-aws-sdk:2.3.0" level="project" />

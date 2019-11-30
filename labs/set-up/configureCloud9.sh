@@ -55,19 +55,19 @@ echo 'export PATH="$PATH:$GATLING_HOME/bin"' >> ~/.bashrc
 
 # Make the SAM artifact bucket available as ENV variable
 echo "Make the SAM artifact bucket available as ENV variable"
-export SAM_ARTIFACT_BUCKET=$(aws cloudformation describe-stacks \
+echo "export SAM_ARTIFACT_BUCKET=$(aws cloudformation describe-stacks \
     --stack-name lambda-java-workshop \
     --query 'Stacks[].Outputs[?OutputKey==`SAMArtifactBucket`].OutputValue' \
-    --output text)
+    --output text)" >> ~/.bashrc
 
 echo "Make the pet bucket available as ENV variable"
-export PETS_BUCKET=$(aws cloudformation describe-stacks \
+echo "export PETS_BUCKET=$(aws cloudformation describe-stacks \
     --stack-name lambda-java-workshop \
     --query 'Stacks[].Outputs[?OutputKey==`PetsBucket`].OutputValue' \
-    --output text)
+    --output text)" >> ~/.bashrc
 
 echo "Make the pet table available as ENV variable"
-export PETS_TABLE=$(aws cloudformation describe-stacks \
+echo "export PETS_TABLE=$(aws cloudformation describe-stacks \
     --stack-name lambda-java-workshop \
     --query 'Stacks[].Outputs[?OutputKey==`PetsTable`].OutputValue' \
-    --output text)
+    --output text)" >> ~/.bashrc
