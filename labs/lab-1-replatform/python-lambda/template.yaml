@@ -1,0 +1,41 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Globals:
+  Api:
+    EndpointConfiguration: REGIONAL
+    TracingEnabled: True
+
+Resources:
+  CreatePetLambdaHandlerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app.lambda_handler
+      Runtime: python3.6
+      CodeUri: src/
+      MemorySize: 2048
+      Environment:
+        Variables:
+          TABLE_NAME: !ImportValue PetsTable
+          BUCKET_NAME: !ImportValue PetsBucket
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !ImportValue PetsTable
+        - S3CrudPolicy:
+            BucketName: !ImportValue PetsBucket
+      Timeout: 30
+      Tracing: Active
+      Events:
+        PetResource:
+          Type: Api
+          Properties:
+            Path: /pet
+            Method: post
+
+Outputs:
+  PetsApiServiceURL:
+    Description: The Serverless Rest Api URL for our pets API to add a new pet
+    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod'
+  CreatePetLambdaHandlerFunction:
+    Description: The ARN for our CreatePetLambdaHandler function
+    Value: !GetAtt CreatePetLambdaHandlerFunction.Arn

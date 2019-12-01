@@ -42,7 +42,7 @@ The **Outputs** tab in your CloudFormation console exposes the **Cloud9DevEnvUrl
 
 ### 5. Configure your AWS Cloud9 development environment
 
-In your AWS Cloud9 IDE, you can close the welcome tab. In the left environment navigation window, you can see the project **lambda-on-java-workshop** we have already checked out for you from Github. This project also contains a shell script to update the OS and to install additional tools like GraalVM, Scala and Gatling. Run the following command in the **bash** window (at the bottom of the AWS Cloud9 IDE):
+In your AWS Cloud9 IDE, you can close the welcome tab. In the left environment navigation window, you can see the project **lambda-on-java-workshop** we have already checked out for you from Github. This project also contains a shell script to update the OS and to install additional tools like GraalVM, Scala and Gatling. Run the following command in the bash window at the bottom of the AWS Cloud9 IDE:
 
 {{< highlight bash >}}
 chmod +x ~/environment/lambda-on-java-workshop/labs/set-up/configureCloud9.sh 
@@ -52,7 +52,14 @@ source ~/.bashrc
 
 It takes usually ~ 3 minutes, until the OS is updated and all tools are installed.
 
-Now we continue with building all service variants, by running the following command in the AWS Cloud9 IDE bash window:
+As we want to compare our results with an equivalent implementation in Python, let's build the Python 3.6 based service first by running the following command in in the bash window in AWS Cloud9:
+
+```bash
+cd ~/environment/lambda-on-java-workshop/labs/lab-1-replatform/python-lambda
+sam build
+```
+
+Now we continue with building all Java based service implementations, by running the following command in the AWS Cloud9 IDE bash window:
 
 {{< highlight bash >}}
 cd ~/environment/lambda-on-java-workshop/labs
@@ -61,3 +68,5 @@ chmod +x ./mvnw
 {{< /highlight >}}
 
 It takes usually ~ ? minutes, until all projects are build and packaged.
+
+Finally, we have to ... Docker

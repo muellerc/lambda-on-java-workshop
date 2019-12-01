@@ -29,13 +29,14 @@ sudo /usr/local/bin/pip install cfn-lint
 
 # Install GraalVM 19.3.0
 echo "Install GraalVM 19.3.0"
-wget https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-19.3.0/graalvm-ce-java8-linux-amd64-19.3.0.tar.gz
-tar -xzvf graalvm-ce-java8-linux-amd64-19.3.0.tar.gz
-rm -rf graalvm-ce-java8-linux-amd64-19.3.0.tar.gz
-echo 'export GRAALVM_HOME=/home/ec2-user/environment/graalvm-ce-java8-19.3.0' >> ~/.bashrc
-echo 'export JAVA_HOME=/home/ec2-user/environment/graalvm-ce-java8-19.3.0' >> ~/.bashrc
+#wget https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-19.3.0/graalvm-ce-java8-linux-amd64-19.3.0.tar.gz
+wget https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-19.3.0/graalvm-ce-java11-linux-amd64-19.3.0.tar.gz
+tar -xzvf graalvm-ce-java11-linux-amd64-19.3.0.tar.gz
+rm -rf graalvm-ce-java11-linux-amd64-19.3.0.tar.gz
+echo 'export GRAALVM_HOME=/home/ec2-user/environment/graalvm-ce-java11-19.3.0' >> ~/.bashrc
+echo 'export JAVA_HOME=/home/ec2-user/environment/graalvm-ce-java11-19.3.0' >> ~/.bashrc
 echo 'export PATH="$PATH:$GRAALVM_HOME/bin"' >> ~/.bashrc
-/home/ec2-user/environment/graalvm-ce-java8-19.3.0/bin/gu install native-image
+/home/ec2-user/environment/graalvm-ce-java11-19.3.0/bin/gu install native-image
 
 # Install Scala 2.13.1
 echo "Install Scala 2.13.1"

@@ -11,7 +11,7 @@
   </parent>
 
   <groupId>com.aws.samples.java.lambda.labs.lab-1-replatform</groupId>
-  <artifactId>serverless-java-container-springboot2</artifactId>
+  <artifactId>springboot2-lambda</artifactId>
   <packaging>jar</packaging>
 
   <dependencyManagement>

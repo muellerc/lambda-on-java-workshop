@@ -14,6 +14,9 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>serverless-java-container-springboot2</module>
+        <module>springboot2-fargate</module>
+        <module>springboot2-lambda</module>
+        <module>dagger2-lambda</module>
+        <module>no-di-framework-lambda</module>
     </modules>
 </project>

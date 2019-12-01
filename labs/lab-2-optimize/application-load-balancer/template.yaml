@@ -1,0 +1,55 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Resources:
+  CreatePetLambdaHandlerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.aws.samples.petclinic.CreatePetLambdaHandler::handleRequest
+      Runtime: java8
+      CodeUri: target/app.jar
+      MemorySize: 2048
+      Environment:
+        Variables:
+          TABLE_NAME: !ImportValue PetsTable
+          BUCKET_NAME: !ImportValue PetsBucket
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !ImportValue PetsTable
+        - S3CrudPolicy:
+            BucketName: !ImportValue PetsBucket
+      Timeout: 30
+      Tracing: Active
+
+  MyLambdaInvokePermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !GetAtt
+        - CreatePetLambdaHandlerFunction
+        - Arn
+      Action: 'lambda:InvokeFunction'
+      Principal: elasticloadbalancing.amazonaws.com
+
+  LoadBalancerListener:
+    Type: AWS::ElasticLoadBalancingV2::Listener
+    Properties:
+      LoadBalancerArn: !Ref SpringFargateLoadBalancer
+      Port: 80
+      Protocol: HTTP
+      DefaultActions:
+        - Type: forward
+          TargetGroupArn: !Ref TargetGroup
+
+  TargetGroup:
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+    Properties:
+      HealthCheckEnabled: false
+      Name: PetAPITargets
+      TargetType: lambda
+      Targets:
+        - Id: !GetAtt [ CreatePetLambdaHandlerFunction, Arn ]
+
+Outputs:
+  CreatePetLambdaHandlerFunction:
+    Description: The ARN for our CreatePetLambdaHandler function
+    Value: !GetAtt CreatePetLambdaHandlerFunction.Arn

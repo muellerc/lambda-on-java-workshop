@@ -15,5 +15,15 @@
 
     <modules>
         <module>aws-java-sdk-v2</module>
+        <module>reducing-dependencies</module>
+        <module>packaging-mechanism</module>
+        <module>handler-interface</module>
+        <module>jvm-options</module>
+<!--        <module>java-11</module>-->
+        <module>lambda-layers</module>
+        <module>coretto-crypto-provider</module>
+        <module>prime-resources</module>
+        <module>application-load-balancer</module>
+        <module>multithreading</module>
     </modules>
 </project>

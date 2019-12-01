@@ -82,6 +82,10 @@ export FUNCTION_ARN=$(aws cloudformation describe-stacks \
     --output text)
 ```
 
+## Optimize Memory Configuration
+
+TODO
+
 ## Run The Load Tests
 
 ```bash
@@ -105,10 +109,6 @@ for i in {1..10}; do aws lambda update-function-configuration --function-name $F
 ### Amazon X-Ray Cold-Start Trace (best out of 10)
 
 {{< figure src="aws-java-sdk-v2/x-ray.png" >}}
-
-## Conclusion
-
-TODO
 
 ## Source Code
 

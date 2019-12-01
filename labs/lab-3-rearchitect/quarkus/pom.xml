@@ -1,0 +1,158 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.aws.samples.java.lambda.labs</groupId>
+        <artifactId>lab-3-rearchitect</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.aws.samples.java.lambda.labs.lab-3-rearchitect</groupId>
+    <artifactId>quarkus</artifactId>
+    <packaging>jar</packaging>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.quarkus</groupId>
+                <artifactId>quarkus-bom</artifactId>
+                <version>1.0.1.Final</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-amazon-lambda</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>dynamodb</artifactId>
+            <version>${aws.java.sdkv2.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>apache-client</artifactId>
+                    <groupId>software.amazon.awssdk</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>netty-nio-client</artifactId>
+                    <groupId>software.amazon.awssdk</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>s3</artifactId>
+            <version>${aws.java.sdkv2.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>apache-client</artifactId>
+                    <groupId>software.amazon.awssdk</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>netty-nio-client</artifactId>
+                    <groupId>software.amazon.awssdk</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>url-connection-client</artifactId>
+            <version>${aws.java.sdkv2.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-lambda-java-events</artifactId>
+            <version>${com.amazonaws.aws-lambda-java-events.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${org.slf4j.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+            </plugin>
+
+<!--            <plugin>-->
+<!--                <groupId>io.quarkus</groupId>-->
+<!--                <artifactId>quarkus-maven-plugin</artifactId>-->
+<!--                <version>1.0.1.Final</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            <goal>native-image</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <enableHttpUrlHandler>true</enableHttpUrlHandler>-->
+<!--                            <enableHttpsUrlHandler>true</enableHttpsUrlHandler>-->
+<!--                            <additionalBuildArgs>&#45;&#45;initialize-at-run-time=javax.net.ssl.HttpsURLConnection</additionalBuildArgs>-->
+<!--                            <enableAllSecurityServices>true</enableAllSecurityServices>-->
+<!--                            <enableJni>true</enableJni>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+
+            <plugin>
+                <groupId>org.graalvm.nativeimage</groupId>
+                <artifactId>native-image-maven-plugin</artifactId>
+                <version>${graalvm.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>native-image</goal>
+                        </goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <skip>false</skip>
+                    <imageName>${project.artifactId}-${project.version}-runner</imageName>
+                    <buildArgs>
+                        --no-fallback --no-server -H:EnableURLProtocols=http,https --initialize-at-build-time=com.fasterxml.jackson.annotation.JsonProperty$Access -H:-UseServiceLoaderFeature -H:-AddAllCharsets -H:+ReportExceptionStackTraces -J-Djava.util.logging.manager=org.jboss.logmanager.LogManager  --initialize-at-run-time=org.wildfly.common.net.CidrAddress  -H:+TraceClassInitialization
+                    </buildArgs>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>zip-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <finalName>function</finalName>
+                            <descriptors>
+                                <descriptor>src/assembly/zip.xml</descriptor>
+                            </descriptors>
+                            <attach>false</attach>
+                            <appendAssemblyId>false</appendAssemblyId>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
