@@ -16,7 +16,6 @@ Resources:
       MemorySize: 2048
       Environment:
         Variables:
-          DISABLE_SIGNAL_HANDLERS: true
           TABLE_NAME: !ImportValue PetsTable
           BUCKET_NAME: !ImportValue PetsBucket
       Policies:

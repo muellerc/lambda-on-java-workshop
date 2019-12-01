@@ -13,6 +13,16 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AWSConfig {
 
+    @Bean(name = "petsTableName")
+    public String petsTableName() {
+        return System.getenv("TABLE_NAME");
+    }
+
+    @Bean(name = "petsBucketName")
+    public String petsBucketName() {
+        return System.getenv("BUCKET_NAME");
+    }
+
     @Bean(name = "awsCredentialsProvider")
     public AWSCredentialsProvider amazonAWSCredentialsProvider() {
         return DefaultAWSCredentialsProviderChain.getInstance();

@@ -4,6 +4,8 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import org.springframework.stereotype.Component;
 
+import javax.inject.Inject;
+import javax.inject.Named;
 import java.io.ByteArrayInputStream;
 import java.util.UUID;
 
@@ -11,9 +13,12 @@ import java.util.UUID;
 public class MedicalRecordStore {
 
     private AmazonS3 amazonS3;
+    private String petsBucketName;
 
-    public MedicalRecordStore(AmazonS3 amazonS3) {
+    @Inject
+    public MedicalRecordStore(AmazonS3 amazonS3, @Named(value = "petsBucketName") String petsBucketName) {
         this.amazonS3 = amazonS3;
+        this.petsBucketName = petsBucketName;
     }
 
     public MedicalRecord save(MedicalRecord medicalRecord) {
