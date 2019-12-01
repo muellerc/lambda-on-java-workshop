@@ -10,6 +10,7 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.xray.AWSXRay;
 import com.amazonaws.xray.handlers.TracingHandler;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import javax.annotation.Nullable;
 import dagger.Module;
 import dagger.Provides;
 
@@ -18,6 +19,12 @@ import javax.inject.Singleton;
 
 @Module
 public class PetModule {
+
+    @Provides
+    @Singleton
+    public boolean enableXRay() {
+        return System.getenv("AWS_XRAY_DAEMON_ADDRESS") != null;
+    }
 
     @Provides
     @Singleton
@@ -53,13 +60,23 @@ public class PetModule {
     }
 
     @Provides
+    @Nullable
+    public TracingHandler provideTracingHandler(boolean enableXRay) {
+        return new TracingHandler(AWSXRay.getGlobalRecorder());
+    }
+
+    @Provides
     @Singleton
-    public AmazonDynamoDB provideAmazonDynamoDB(AWSCredentialsProvider credentialsProvider, Regions regions) {
-        return AmazonDynamoDBClientBuilder.standard()
-                .withRequestHandlers(new TracingHandler(AWSXRay.getGlobalRecorder()))
+    public AmazonDynamoDB provideAmazonDynamoDB(@Nullable TracingHandler tracingHandler, boolean enableXRay, AWSCredentialsProvider credentialsProvider, Regions regions) {
+        AmazonDynamoDBClientBuilder builder = AmazonDynamoDBClientBuilder.standard()
                 .withCredentials(credentialsProvider)
-                .withRegion(regions)
-                .build();
+                .withRegion(regions);
+
+        if (enableXRay) {
+            builder.withRequestHandlers(tracingHandler);
+        }
+
+        return builder.build();
     }
 
     @Provides
@@ -70,11 +87,15 @@ public class PetModule {
 
     @Provides
     @Singleton
-    public AmazonS3 provideAmazonS3(AWSCredentialsProvider credentialsProvider, Regions regions) {
-        return AmazonS3ClientBuilder.standard()
-                .withRequestHandlers(new TracingHandler(AWSXRay.getGlobalRecorder()))
+    public AmazonS3 provideAmazonS3(@Nullable TracingHandler tracingHandler, boolean enableXRay, AWSCredentialsProvider credentialsProvider, Regions regions) {
+        AmazonS3ClientBuilder builder = AmazonS3ClientBuilder.standard()
                 .withCredentials(credentialsProvider)
-                .withRegion(regions)
-                .build();
+                .withRegion(regions);
+
+        if (enableXRay) {
+            builder.withRequestHandlers(tracingHandler);
+        }
+
+        return builder.build();
     }
 }

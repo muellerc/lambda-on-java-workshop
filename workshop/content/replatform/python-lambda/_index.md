@@ -10,10 +10,10 @@ To determine the package size of your function, run the following command in the
 
 ```bash
 cd ~/environment/lambda-on-java-workshop/labs
-ls -lh lab-1-replatform/python-lambda/.sam/
+ls -lh lab-1-replatform/python-lambda/.aws-sam/build/CreatePetLambdaHandlerFunction
 ```
 
-It will report a package size of **? MB**.
+It will report a package size of **666 bytes** (112 KB uncompressed).
 
 ## Deploy The Application
 
@@ -38,7 +38,9 @@ export FUNCTION_ARN=$(aws cloudformation describe-stacks \
 
 ## Memory Configuration
 
-TODO
+We choose to with 1024 MB for the load and performance tests.
+
+{{< figure src="python-lambda/power-tuning.png" >}}
 
 ## Run The Load Tests
 

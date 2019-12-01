@@ -2,7 +2,7 @@
   "lambdaARN": "arn:aws:lambda:eu-central-1:689573718314:function:no-di-lambda-13-x-PetStoreFunction-1WZW2LJPK5ZXN",
   "powerValues": [256, 512, 1024, 2048, 3008],
   "num": 20,
-  "payload": {"name": "Max", "type": "dog", "birthday": "2010-11-03", "medicalRecord": "bla bla bla"},
+  "payload": {"body": "{\"name\": \"Max\", \"type\": \"dog\", \"birthday\": \"2010-11-03\", \"medicalRecord\": \"bla bla bla\"}"},
   "parallelInvocation": false,
   "strategy": "speed"
 }

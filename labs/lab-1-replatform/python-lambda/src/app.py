@@ -12,10 +12,7 @@ dynamodb = boto3.client('dynamodb', AWS_REGION)
 s3 = boto3.client('s3', AWS_REGION)
 
 def lambda_handler(event, context):
-#     print('EVENT: {}'.format(json.dumps(event)))
-
     pet = json.loads(event['body'])
-#     print('The request loaded ' + str(pet))
 
     pet['id'] = str(uuid.uuid4())
 
@@ -29,11 +26,11 @@ def lambda_handler(event, context):
         }
     )
 
-   s3.put_objext (
-       BucketName=BUCKET_NAME,
-       Key='medical-record/' + pet['id'],
-       Object=json.dumps(pet)
-   )
+    s3.put_object (
+        Bucket=BUCKET_NAME,
+        Key='medical-record/' + pet['id'],
+        Body=json.dumps(pet)
+    )
 
     return {
         'statusCode': 200,

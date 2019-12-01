@@ -33,3 +33,21 @@ In addition, we are using **[AWS X-Ray](https://aws.amazon.com/xray/)** to sampl
 ### Javaagent Instrumentation
 
 Because we have situations where we don't want or cannot use Amazon X-Ray, we use **[Javaagent Instrumentation](https://github.com/mvd199/javaagent-instrumentation)** in addition to get better insights.
+
+You will get similar output like this (package names dropped), which gives you an idea where you spend most of the time executing the request. You have to specify the classes, which should be instrumented:
+
+```bash
+ApacheHttpClient.createClient(ApacheHttpClient$DefaultBuilder,AttributeMap) : 323
+DefaultDynamoDbClient.init(BaseAwsJsonProtocolFactory$Builder) : 79
+ObjectMapper._findRootDeserializer(DeserializationContext,JavaType) : 140
+ObjectMapper._readMapAndClose(JsonParser,JavaType) : 142
+ObjectMapper.readValue(String,JavaType) : 161
+ObjectMapper.readValue(java.lang.String,java.lang.Class) : 165
+ApacheHttpClient.execute(HttpRequestBase) : 429
+ApacheHttpClient.access$500(ApacheHttpClient,HttpRequestBase) : 429
+DefaultDynamoDbClient.putItem(PutItemRequest) : 707
+ApacheHttpClient.execute(HttpRequestBase) : 251
+ApacheHttpClient.access$500(ApacheHttpClient,HttpRequestBase) : 251
+DefaultS3Client.putObject(PutObjectRequest,RequestBody) : 329
+CreatePetLambdaHandler.handleRequest(APIGatewayV2ProxyRequestEvent,Context) : 1428
+```

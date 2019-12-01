@@ -13,7 +13,7 @@ Resources:
       Handler: app.lambda_handler
       Runtime: python3.6
       CodeUri: src/
-      MemorySize: 2048
+      MemorySize: 1024
       Environment:
         Variables:
           TABLE_NAME: !ImportValue PetsTable

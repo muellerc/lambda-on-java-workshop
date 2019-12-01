@@ -11,6 +11,9 @@ aws elbv2 create-target-group \
   --port 443 \
   --target-type lambda
 
+aws elbv2 register-targets \
+  --target-group-arn arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-tcp-ip-targets/8518e899d173178f \
+  --targets Id=arn:aws:lambda:us-west-2:123456789012:function:my-function
 
 aws lambda add-permission \
 --function-name lambda-function-arn-with-alias-name \ 

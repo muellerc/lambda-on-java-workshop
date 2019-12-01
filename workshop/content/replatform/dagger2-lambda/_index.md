@@ -13,7 +13,7 @@ cd ~/environment/lambda-on-java-workshop/labs
 ls -lh lab-1-replatform/dagger2-lambda/target/app.jar
 ```
 
-It will report a package size of **? MB**.
+It will report a package size of **8.9 MB**.
 
 To be able to run your function locally to analyse it in more detail, export your `AWS_REGION` as following:
 
@@ -27,7 +27,7 @@ To determine the number of classes which gets loaded to execute your function, r
 java -cp lab-1-replatform/dagger2-lambda/target/app.jar -verbose:class com.aws.samples.petclinic.Main | grep '\[Loaded' | wc -l
 ```
 
-It will report **? classes got loaded** to execute your AWS Lambda function.
+It will report **4516 classes got loaded** to execute your AWS Lambda function.
 
 To get a breakdown by package name, run the following command:
 
