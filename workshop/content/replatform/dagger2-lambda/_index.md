@@ -24,7 +24,7 @@ export AWS_REGION=$(aws --profile default configure get region)
 To determine the number of classes which gets loaded to execute your function, run the following command in the bash window in your AWS Cloud9 IDE. Each application contains a helper Main class which invokes your AWS Lambda function locally:
 
 ```bash
-java -cp lab-1-replatform/dagger2-lambda/target/app.jar -verbose:class com.aws.samples.petclinic.Main | grep '\[Loaded' | wc -l
+java -cp lab-1-replatform/dagger2-lambda/target/app.jar -verbose:class Main | grep '\[Loaded' | wc -l
 ```
 
 It will report **4516 classes got loaded** to execute your AWS Lambda function.
@@ -32,19 +32,30 @@ It will report **4516 classes got loaded** to execute your AWS Lambda function.
 To get a breakdown by package name, run the following command:
 
 ```bash
-java -cp lab-1-replatform/dagger2-lambda/target/app.jar -verbose:class com.aws.samples.petclinic.Main | grep '\[Loaded' | grep '.jar\]' | sed 's/\[Loaded \([^A-Z]*\)[\$A-Za-z0-9]* from .*\]/\1/g' | sort | uniq -c | sort
+java -cp lab-1-replatform/dagger2-lambda/target/app.jar -verbose:class Main | grep '\[Loaded' | grep '.jar\]' | sed 's/\[Loaded \([^A-Z]*\)[\$A-Za-z0-9]* from .*\]/\1/g' | sort | uniq -c | sort
 ```
 
 You can run an instrumented version of your function which measure the execution time for all methods in the most interesting classes by running the following command:
 
 ```bash
-java -cp lab-1-replatform/dagger2-lambda/target/app.jar -javaagent:java-instrumentation-1.0-SNAPSHOT.jar=instrumentation.cfg com.aws.samples.petclinic.Main
+java -cp lab-1-replatform/dagger2-lambda/target/app.jar -javaagent:java-instrumentation-1.0-SNAPSHOT.jar=instrumentation.cfg Main
 ```
 
 You will a similar output like this (package names dropped), which gives you an idea where you spend most of the time:
 
 ```bash
-
+ObjectMapper._findRootDeserializer(DeserializationContext,JavaType) : 190
+ObjectMapper._readMapAndClose(JsonParser,JavaType) : 194
+ObjectMapper.readValue(URL,Class) : 222
+ObjectMapper._readMapAndClose(JsonParser,JavaType) : 61
+ObjectMapper.readValue(URL,Class) : 62
+ObjectMapper._findRootDeserializer(DeserializationContext,JavaType) : 53
+ObjectMapper._readMapAndClose(JsonParser,JavaType) : 79
+ObjectMapper.readValue(URL,Class) : 80
+ObjectMapper._findRootDeserializer(DeserializationContext,JavaType) : 56
+ObjectMapper._readMapAndClose(JsonParser,JavaType) : 175
+ObjectMapper.readValue(InputStream,Class) : 175
+CreatePetLambdaHandler.handleRequest(APIGatewayV2ProxyRequestEvent,Context) : 1555
 ```
 
 ## Deploy The Application
@@ -70,7 +81,9 @@ export FUNCTION_ARN=$(aws cloudformation describe-stacks \
 
 ## Memory Configuration
 
-TODO
+We choose to go with 1024 MB for the load and performance tests.
+
+{{< figure src="python-lambda/power-tuning.png" >}}
 
 ## Run The Load Tests
 

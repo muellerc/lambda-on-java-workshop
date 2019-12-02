@@ -62,13 +62,13 @@ echo "export SAM_ARTIFACT_BUCKET=$(aws cloudformation describe-stacks \
     --output text)" >> ~/.bashrc
 
 echo "Make the pet bucket available as ENV variable"
-echo "export PETS_BUCKET=$(aws cloudformation describe-stacks \
+echo "export BUCKET_NAME=$(aws cloudformation describe-stacks \
     --stack-name lambda-java-workshop \
     --query 'Stacks[].Outputs[?OutputKey==`PetsBucket`].OutputValue' \
     --output text)" >> ~/.bashrc
 
 echo "Make the pet table available as ENV variable"
-echo "export PETS_TABLE=$(aws cloudformation describe-stacks \
+echo "export TABLE_NAME=$(aws cloudformation describe-stacks \
     --stack-name lambda-java-workshop \
     --query 'Stacks[].Outputs[?OutputKey==`PetsTable`].OutputValue' \
     --output text)" >> ~/.bashrc

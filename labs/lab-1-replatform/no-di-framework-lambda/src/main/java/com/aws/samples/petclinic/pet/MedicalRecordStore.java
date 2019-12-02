@@ -9,16 +9,18 @@ import java.util.UUID;
 public class MedicalRecordStore {
 
     private AmazonS3 amazonS3;
+    private String petsBucketName;
 
-    public MedicalRecordStore(AmazonS3 amazonS3) {
+    public MedicalRecordStore(AmazonS3 amazonS3, String petsBucketName) {
         this.amazonS3 = amazonS3;
+        this.petsBucketName = petsBucketName;
     }
 
     public MedicalRecord save(MedicalRecord medicalRecord) {
         medicalRecord.setId(UUID.randomUUID().toString());
 
         amazonS3.putObject(new PutObjectRequest(
-                "cmr-lambda",
+                petsBucketName,
                 "medical-record/" + medicalRecord.getId(),
                 new ByteArrayInputStream(medicalRecord.getRecord().getBytes()),
                 null));

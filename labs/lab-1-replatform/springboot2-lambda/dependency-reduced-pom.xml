@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
-    <artifactId>lab-1-replatform</artifactId>
-    <groupId>com.aws.samples.java.lambda.labs</groupId>
-    <version>1.0.0-SNAPSHOT</version>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <groupId>org.springframework.boot</groupId>
+    <version>2.2.1.RELEASE</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.aws.samples.java.lambda.labs.lab-1-replatform</groupId>
   <artifactId>springboot2-lambda</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
   <build>
     <finalName>${project.artifactId}</finalName>
     <plugins>
@@ -93,13 +94,13 @@
     <dependency>
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-java-sdk-dynamodb</artifactId>
-      <version>1.11.683</version>
+      <version>1.11.659</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-java-sdk-s3</artifactId>
-      <version>1.11.683</version>
+      <version>1.11.659</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -145,15 +146,11 @@
       <scope>provided</scope>
     </dependency>
   </dependencies>
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-dependencies</artifactId>
-        <version>2.2.1.RELEASE</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+  <properties>
+    <aws.java.sdkv1.version>1.11.659</aws.java.sdkv1.version>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
 </project>

@@ -134,7 +134,9 @@ public class Main {
             "}";
 
     public static void main(String[] args) throws Exception {
-        CreatePetLambdaStreamHandler handler = new CreatePetLambdaStreamHandler();
+        PetClinicApplication.main(null);
+
+        CreatePetLambdaStreamHandler handler = PetClinicApplication.context.getBean(CreatePetLambdaStreamHandler.class);
 
         ByteArrayInputStream input = new ByteArrayInputStream(API_GATEWAY_EVENT.getBytes("UTF-8"));
         ByteArrayOutputStream output = new ByteArrayOutputStream();

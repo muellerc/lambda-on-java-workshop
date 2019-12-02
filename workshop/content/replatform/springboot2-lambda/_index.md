@@ -10,42 +10,10 @@ To determine the package size of your function, run the following command in the
 
 ```bash
 cd ~/environment/lambda-on-java-workshop/labs
-ls -lh lab-1-replatform/springboot2-lambda/target/app.jar
+ls -lh lab-1-replatform/springboot2-lambda/target/springboot2-lambda.jar
 ```
 
-It will report a package size of **? MB**.
-
-To be able to run your function locally to analyse it in more detail, export your `AWS_REGION` as following:
-
-```bash
-export AWS_REGION=$(aws --profile default configure get region)
-```
-
-To determine the number of classes which gets loaded to execute your function, run the following command in the bash window in your AWS Cloud9 IDE. Each application contains a helper Main class which invokes your AWS Lambda function locally:
-
-```bash
-java -cp lab-1-replatform/springboot2-lambda/target/app.jar -verbose:class com.aws.samples.petclinic.Main | grep '\[Loaded' | wc -l
-```
-
-It will report **? classes got loaded** to execute your AWS Lambda function.
-
-To get a breakdown by package name, run the following command:
-
-```bash
-java -cp lab-1-replatform/springboot2-lambda/target/app.jar -verbose:class com.aws.samples.petclinic.Main | grep '\[Loaded' | grep '.jar\]' | sed 's/\[Loaded \([^A-Z]*\)[\$A-Za-z0-9]* from .*\]/\1/g' | sort | uniq -c | sort
-```
-
-You can run an instrumented version of your function which measure the execution time for all methods in the most interesting classes by running the following command:
-
-```bash
-java -cp lab-1-replatform/springboot2-lambda/target/app.jar -javaagent:java-instrumentation-1.0-SNAPSHOT.jar=instrumentation.cfg com.aws.samples.petclinic.Main
-```
-
-You will a similar output like this (package names dropped), which gives you an idea where you spend most of the time:
-
-```bash
-
-```
+It will report a package size of **39 MB**.
 
 ## Deploy The Application
 

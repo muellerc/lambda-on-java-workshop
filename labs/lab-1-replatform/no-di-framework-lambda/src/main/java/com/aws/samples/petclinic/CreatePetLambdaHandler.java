@@ -28,27 +28,41 @@ public class CreatePetLambdaHandler implements RequestHandler<APIGatewayV2ProxyR
     public CreatePetLambdaHandler() {
         objectMapper = new ObjectMapper();
 
+        boolean enableXRay = System.getenv("AWS_XRAY_DAEMON_ADDRESS") != null;
+
+        String table = System.getenv("TABLE_NAME");
+
+        String bucket = System.getenv("BUCKET_NAME");
+
         Regions regions = Regions.fromName(System.getenv("AWS_REGION"));
 
         AWSCredentialsProvider credentialsProvider = DefaultAWSCredentialsProviderChain.getInstance();
 
-        AmazonDynamoDB amazonDynamoDB = AmazonDynamoDBClientBuilder.standard()
-                .withRequestHandlers(new TracingHandler(AWSXRay.getGlobalRecorder()))
+        AmazonDynamoDBClientBuilder dynamoDBClientBuilder = AmazonDynamoDBClientBuilder.standard()
                 .withCredentials(credentialsProvider)
-                .withRegion(regions)
-                .build();
+                .withRegion(regions);
+
+        if (enableXRay) {
+            dynamoDBClientBuilder.withRequestHandlers(new TracingHandler(AWSXRay.getGlobalRecorder()));
+        }
+
+        AmazonDynamoDB amazonDynamoDB = dynamoDBClientBuilder.build();
 
         DynamoDBMapper dynamoDBMapper = new DynamoDBMapper(amazonDynamoDB);
 
         PetRepository repository = new PetRepository(dynamoDBMapper);
 
-        AmazonS3 amazonS3 = AmazonS3ClientBuilder.standard()
-                .withRequestHandlers(new TracingHandler(AWSXRay.getGlobalRecorder()))
+        AmazonS3ClientBuilder s3ClientBuilder = AmazonS3ClientBuilder.standard()
                 .withCredentials(credentialsProvider)
-                .withRegion(regions)
-                .build();
+                .withRegion(regions);
 
-        MedicalRecordStore medicalRecordStore = new MedicalRecordStore(amazonS3);
+        if (enableXRay) {
+            s3ClientBuilder.withRequestHandlers(new TracingHandler(AWSXRay.getGlobalRecorder()));
+        }
+
+        AmazonS3 amazonS3 = s3ClientBuilder.build();
+
+        MedicalRecordStore medicalRecordStore = new MedicalRecordStore(amazonS3, bucket);
 
         service = new PetService(repository, medicalRecordStore);
     }
@@ -59,15 +73,11 @@ public class CreatePetLambdaHandler implements RequestHandler<APIGatewayV2ProxyR
         response.setStatusCode(200);
 
         try {
-            AWSXRay.beginSubsegment("deserializePetRecord");
             PetRecord petRecord = objectMapper.readValue(input.getBody(), PetRecord.class);
-            AWSXRay.endSubsegment();
 
             petRecord = service.addPet(petRecord);
 
-            AWSXRay.beginSubsegment("serializePetRecord");
             response.setBody(objectMapper.writeValueAsString(petRecord));
-            AWSXRay.endSubsegment();
         } catch (Exception e) {
             response.setStatusCode(500);
             e.printStackTrace();

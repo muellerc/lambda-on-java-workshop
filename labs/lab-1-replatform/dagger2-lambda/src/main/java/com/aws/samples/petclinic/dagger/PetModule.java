@@ -89,8 +89,8 @@ public class PetModule {
     @Singleton
     public AmazonS3 provideAmazonS3(@Nullable TracingHandler tracingHandler, boolean enableXRay, AWSCredentialsProvider credentialsProvider, Regions regions) {
         AmazonS3ClientBuilder builder = AmazonS3ClientBuilder.standard()
-                .withCredentials(credentialsProvider)
-                .withRegion(regions);
+            .withCredentials(credentialsProvider)
+            .withRegion(regions);
 
         if (enableXRay) {
             builder.withRequestHandlers(tracingHandler);

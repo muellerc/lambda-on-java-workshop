@@ -38,7 +38,7 @@ export FUNCTION_ARN=$(aws cloudformation describe-stacks \
 
 ## Memory Configuration
 
-We choose to with 1024 MB for the load and performance tests.
+We choose to go with 1024 MB for the load and performance tests.
 
 {{< figure src="python-lambda/power-tuning.png" >}}
 

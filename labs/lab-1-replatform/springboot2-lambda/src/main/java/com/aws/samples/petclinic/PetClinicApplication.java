@@ -24,6 +24,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
@@ -33,7 +34,9 @@ import org.springframework.context.annotation.Import;
 @Import({AWSConfig.class})
 public class PetClinicApplication {
 
+    static ConfigurableApplicationContext context;
+
     public static void main(String[] args) {
-        SpringApplication.run(PetClinicApplication.class, "--spring.main.allow-bean-definition-overriding=true");
+        context = SpringApplication.run(PetClinicApplication.class, "--spring.main.allow-bean-definition-overriding=true");
     }
 }
