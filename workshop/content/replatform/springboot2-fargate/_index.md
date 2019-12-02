@@ -17,9 +17,28 @@ It will report a package size of **42 MB**.
 
 ## Deploy The Application
 
+First, we have to build our Docker image and upload it to Amazon ECR, our private image registry:
+
+```bash
+$(aws ecr get-login --no-include-email --region REPLACE_ME_WITH_YOUR_REGION)
+aws ecr create-repository --repository-name spring-fargate
+
+cd ~/environment/lambda-on-java-workshop/labs/labslab-1-replatform/springboot2-fargate
+docker build -t spring-fargate .
+docker tag spring-fargate:latest REPLACE_ME_WITH_YOUR_AWS_ACCOUNT_ID.dkr.ecr.REPLACE_ME_WITH_YOUR_REGION.amazonaws.com/spring-fargate:latest
+docker push REPLACE_ME_WITH_YOUR_AWS_ACCOUNT_ID.dkr.ecr.REPLACE_ME_WITH_YOUR_REGION.amazonaws.com/spring-fargate:latest
+```
+
+Last, we have to update the file `~/environment/lambda-on-java-workshop/labs/lab-1-replatform/springboot2-fargate/template.yaml` with your AWS account id and region:
+
+```
+Image: !Sub 'REPLACE_ME_WITH_YOUR_AWS_ACCOUNT_ID.dkr.ecr.REPLACE_ME_WITH_YOUR_REGION.amazonaws.com/spring-fargate:latest'
+```
+
 To deploy the application, run the following command. It also exports the service endpoint url and the function ARN as environment variables for easy access:
 
 ```bash
+cd ~/environment/lambda-on-java-workshop/labs
 sam package --template-file lab-1-replatform/springboot2-fargate/template.yaml \
     --output-template-file lab-1-replatform/springboot2-fargate/packaged.yaml \
     --s3-bucket $SAM_ARTIFACT_BUCKET

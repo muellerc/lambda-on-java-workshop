@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/lab-1-replatform/dagger2-lambda/dagger2-lambda.iml" filepath="$PROJECT_DIR$/lab-1-replatform/dagger2-lambda/dagger2-lambda.iml" />
       <module fileurl="file://$PROJECT_DIR$/lab-3-rearchitect/graalvm/graalvm.iml" filepath="$PROJECT_DIR$/lab-3-rearchitect/graalvm/graalvm.iml" />
       <module fileurl="file://$PROJECT_DIR$/lab-2-optimize/handler-interface/handler-interface.iml" filepath="$PROJECT_DIR$/lab-2-optimize/handler-interface/handler-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab-2-optimize/java-11/java-11.iml" filepath="$PROJECT_DIR$/lab-2-optimize/java-11/java-11.iml" />
       <module fileurl="file://$PROJECT_DIR$/lab-2-optimize/jvm-options/jvm-options.iml" filepath="$PROJECT_DIR$/lab-2-optimize/jvm-options/jvm-options.iml" />
       <module fileurl="file://$PROJECT_DIR$/lab-1-replatform/lab-1-replatform.iml" filepath="$PROJECT_DIR$/lab-1-replatform/lab-1-replatform.iml" />
       <module fileurl="file://$PROJECT_DIR$/lab-2-optimize/lab-2-optimize.iml" filepath="$PROJECT_DIR$/lab-2-optimize/lab-2-optimize.iml" />

@@ -19,7 +19,7 @@
         <module>packaging-mechanism</module>
         <module>handler-interface</module>
         <module>jvm-options</module>
-<!--        <module>java-11</module>-->
+        <module>java-11</module>
         <module>lambda-layers</module>
         <module>coretto-crypto-provider</module>
         <module>prime-resources</module>

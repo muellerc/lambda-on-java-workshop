@@ -67,22 +67,4 @@ chmod +x ./mvnw
 ./mvnw clean package
 {{< /highlight >}}
 
-It takes usually ~ ? minutes, until all projects are build and packaged.
-
-Finally, we have to build our Docker image and upload it to Amazon ECR, our private image registry:
-
-```bash
-$(aws ecr get-login --no-include-email --region REPLACE_ME_WITH_YOUR_REGION)
-aws ecr create-repository --repository-name spring-fargate
-
-cd ~/environment/lambda-on-java-workshop/labs/labslab-1-replatform/springboot2-fargate
-docker build -t spring-fargate .
-docker tag spring-fargate:latest REPLACE_ME_WITH_YOUR_AWS_ACCOUNT_ID.dkr.ecr.REPLACE_ME_WITH_YOUR_REGION.amazonaws.com/spring-fargate:latest
-docker push REPLACE_ME_WITH_YOUR_AWS_ACCOUNT_ID.dkr.ecr.REPLACE_ME_WITH_YOUR_REGION.amazonaws.com/spring-fargate:latest
-```
-
-Last, we have to update the file `~/environment/lambda-on-java-workshop/labs/lab-1-replatform/springboot2-fargate/template.yaml` with your AWS account id and region:
-
-```
-Image: !Sub 'REPLACE_ME_WITH_YOUR_AWS_ACCOUNT_ID.dkr.ecr.REPLACE_ME_WITH_YOUR_REGION.amazonaws.com/spring-fargate:latest'
-```
+It takes usually ~ 12 minutes, until all projects are build and packaged.
