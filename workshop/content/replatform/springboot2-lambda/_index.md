@@ -15,19 +15,6 @@ ls -lh lab-1-replatform/springboot2-lambda/target/springboot2-lambda.jar
 
 It will report a package size of **39 MB**.
 
-To be able to run your function locally to analyse it in more detail, export your `AWS_REGION` as following:
-
-```bash
-export AWS_REGION=$(aws --profile default configure get region)
-```
-
-To determine the number of classes which gets loaded to execute your function, run the following command in the bash window in your AWS Cloud9 IDE. Each application contains a helper Main class which invokes your AWS Lambda function locally:
-
-```bash
-# Java 8
-java -cp lab-1-replatform/dagger2-lambda/target/app.jar -verbose:class com.aws.samples.petclinic.Main | grep '\[Loaded' | wc -l
-```
-
 ## Deploy The Application
 
 To deploy the application, run the following command. It also exports the service endpoint url and the function ARN as environment variables for easy access:
@@ -51,7 +38,9 @@ export FUNCTION_ARN=$(aws cloudformation describe-stacks \
 
 ## Memory Configuration
 
-TODO
+We choose to go with 1024 MB for the load and performance tests.
+
+{{< figure src="python-lambda/power-tuning.png" >}}
 
 ## Run The Load Tests
 
@@ -63,7 +52,7 @@ for i in {1..10}; do aws lambda update-function-configuration --function-name $F
 ## Run the Cold-Start Tests
 
 ```bash
-for i in {1..10}; do aws lambda update-function-configuration --function-name $FUNCTION_ARN --environment "Variables={TABLE_NAME=$PETS_TABLE,BUCKET_NAME=$PETS_BUCKET,KeyName1=KeyValue$i}"; curl -i -X POST -d '{"name": "Max", "type": "dog", "birthday": "2010-11-03", "medicalRecord": "bla bla bla"}' $ENDPOINT/pet; done
+for i in {1..10}; do aws lambda update-function-configuration --function-name $FUNCTION_ARN --environment "Variables={TABLE_NAME=$PETS_TABLE,BUCKET_NAME=$PETS_BUCKET,KeyName1=KeyValue$i}"; curl -i -X POST -H 'content-type: application/json' -d '{"name": "Max", "type": "dog", "birthday": "2010-11-03", "medicalRecord": "bla bla bla"}' $ENDPOINT/pet; done
 ```
 
 ## Result Overview
