@@ -10,10 +10,10 @@ Resources:
   CreatePetLambdaHandlerFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: com.aws.samples.petclinic.CreatePetLambdaHandler::handleRequest
+      Handler: com.aws.samples.petclinic.CreatePetLambdaStreamHandler::handleRequest
       Runtime: java8
       CodeUri: target/app.jar
-      MemorySize: 2048
+      MemorySize: 1024
       Environment:
         Variables:
           TABLE_NAME: !ImportValue PetsTable

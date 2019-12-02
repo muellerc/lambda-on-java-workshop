@@ -40,8 +40,6 @@ export FUNCTION_ARN=$(aws cloudformation describe-stacks \
 
 We choose to go with 1024 MB for the load and performance tests.
 
-{{< figure src="python-lambda/power-tuning.png" >}}
-
 ## Run The Load Tests
 
 ```bash
@@ -52,7 +50,7 @@ for i in {1..10}; do aws lambda update-function-configuration --function-name $F
 ## Run the Cold-Start Tests
 
 ```bash
-for i in {1..10}; do aws lambda update-function-configuration --function-name $FUNCTION_ARN --environment "Variables={TABLE_NAME=$PETS_TABLE,BUCKET_NAME=$PETS_BUCKET,KeyName1=KeyValue$i}"; curl -i -X POST -d '{"name": "Max", "type": "dog", "birthday": "2010-11-03", "medicalRecord": "bla bla bla"}' $ENDPOINT/pet; done
+for i in {1..10}; do aws lambda update-function-configuration --function-name $FUNCTION_ARN --environment "Variables={TABLE_NAME=$PETS_TABLE,BUCKET_NAME=$PETS_BUCKET,KeyName1=KeyValue$i}"; curl -i -X POST -H 'content-type: application/json' -d '{"name": "Max", "type": "dog", "birthday": "2010-11-03", "medicalRecord": "bla bla bla"}' $ENDPOINT/pet; done
 ```
 
 ## Result Overview
@@ -62,9 +60,6 @@ for i in {1..10}; do aws lambda update-function-configuration --function-name $F
 {{< figure src="springboot2-fargate/gatling-1.png" height="400" >}}
 {{< figure src="springboot2-fargate/gatling-2.png" height="400" >}}
 
-### Amazon X-Ray Cold-Start Trace (best out of 10)
-
-{{< figure src="springboot2-fargate/x-ray.png" >}}
 
 ## Source Code
 

@@ -83,7 +83,7 @@ export FUNCTION_ARN=$(aws cloudformation describe-stacks \
 
 We choose to go with 1024 MB for the load and performance tests.
 
-{{< figure src="python-lambda/power-tuning.png" >}}
+{{< figure src="dagger2-lambda/power-tuning.png" >}}
 
 ## Run The Load Tests
 

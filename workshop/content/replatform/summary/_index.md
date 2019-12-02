@@ -4,10 +4,10 @@ weight = 16
 pre = ""
 +++
 
-## Summary
 
-TODO add graph which compares baseline & Python (best cold-start and P99 performance) with all other implementations.
-
-### Conclusion
-
-+ **TODO**
+| Measurement          | MIN in ms | P99 in ms | FASTEST COLD-START in ms |
+|----------------------|-----------|-----------|--------------------------|
+| Python in Lambda     | 46        | 156       | 581                      |
+| Springboot in Lambda | 41        | 11775     | 11500                    |
+| Dagger2 in Lambda    | 36        | 4413      | 4700                     |
+| no DI in Lambda      | 38        | 4492      | 4700                     |

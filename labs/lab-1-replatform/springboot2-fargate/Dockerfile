@@ -7,7 +7,7 @@ RUN yum update -y \
     && rm -rf /var/cache/yum
 
 # Provision the Proxy
-COPY target/0-spring-fargate.jar /app/app.jar
+COPY target/app.jar /app/app.jar
 WORKDIR /app
 
 # Run the Proxy

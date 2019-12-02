@@ -110,19 +110,17 @@ Resources:
         - arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess
         - arn:aws:iam::aws:policy/AmazonS3FullAccess
 
-  # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-cluster.html
   ECSCluster:
     Type: AWS::ECS::Cluster
     Properties:
       ClusterName: spring-fargate-cluster
 
-  # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-taskdefinition.html
   SpringFargateServiceECSTaskDefinition:
     Type: AWS::ECS::TaskDefinition
     Properties:
       Family: spring-fargate-service-task
-      Cpu: 1024
-      Memory: 2048
+      Cpu: 512
+      Memory: 1024
       NetworkMode: awsvpc
       RequiresCompatibilities:
         - FARGATE
@@ -130,9 +128,9 @@ Resources:
       TaskRoleArn: !Ref ECSTaskRole
       ContainerDefinitions:
         - Name: spring-fargate-service-task
-          Cpu: 1024
-          Memory: 2048
-          Image: !Sub '689573718314.dkr.ecr.eu-central-1.amazonaws.com/0-spring-fargate:latest'
+          Cpu: 512
+          Memory: 1024
+          Image: !Sub 'REPLACE_ME_WITH_YOUR_AWS_ACCOUNT_ID.dkr.ecr.REPLACE_ME_WITH_YOUR_REGION.amazonaws.com/spring-fargate:latest'
           Environment:
             - Name: AWS_REGION
               Value: !Ref AWS::Region
@@ -164,19 +162,12 @@ Resources:
         - Key: Name
           Value: !Sub "SpringFargateLoadBalancer-${AWS::StackName}"
 
-  SpringFargateLoadBalancerListenerCertificate:
-    Type: AWS::ElasticLoadBalancingV2::ListenerCertificate
-    Properties:
-      ListenerArn: !Ref SpringFargateLoadBalancerListener
-
   SpringFargateLoadBalancerListener:
     Type: AWS::ElasticLoadBalancingV2::Listener
     Properties:
       LoadBalancerArn: !Ref SpringFargateLoadBalancer
       Port: 80
       Protocol: HTTP
-      Certificates:
-        - !Ref SpringFargateLoadBalancerListenerCertificate
       DefaultActions:
         - Type: forward
           TargetGroupArn: !Ref SpringFargateTargetGroup

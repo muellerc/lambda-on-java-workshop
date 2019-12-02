@@ -16,7 +16,6 @@
     <orderEntry type="library" name="Maven: software.amazon.awssdk:protocol-core:2.10.25" level="project" />
     <orderEntry type="library" name="Maven: software.amazon.awssdk:sdk-core:2.10.25" level="project" />
     <orderEntry type="library" name="Maven: software.amazon.awssdk:profiles:2.10.25" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.28" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.10.0" level="project" />
     <orderEntry type="library" name="Maven: org.reactivestreams:reactive-streams:1.0.2" level="project" />
     <orderEntry type="library" name="Maven: software.amazon.awssdk:auth:2.10.25" level="project" />
@@ -34,5 +33,7 @@
     <orderEntry type="library" name="Maven: com.amazonaws:aws-lambda-java-core:1.2.0" level="project" />
     <orderEntry type="library" name="Maven: com.amazonaws:aws-lambda-java-events:2.2.7" level="project" />
     <orderEntry type="library" name="Maven: joda-time:joda-time:2.6" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-simple:1.7.28" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.28" level="project" />
   </component>
 </module>
