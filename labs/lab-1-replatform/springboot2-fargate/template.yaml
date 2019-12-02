@@ -134,6 +134,8 @@ Resources:
           Memory: 2048
           Image: !Sub '689573718314.dkr.ecr.eu-central-1.amazonaws.com/0-spring-fargate:latest'
           Environment:
+            - Name: AWS_REGION
+              Value: !Ref AWS::Region
             - Name: PORT
               Value: 80
             - Name: TABLE_NAME

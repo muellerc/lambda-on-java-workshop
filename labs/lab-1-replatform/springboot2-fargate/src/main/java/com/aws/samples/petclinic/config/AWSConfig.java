@@ -30,19 +30,24 @@ public class AWSConfig {
         return DefaultAWSCredentialsProviderChain.getInstance();
     }
 
+    @Bean
+    public Regions provideRegions() {
+        return Regions.fromName(System.getenv("AWS_REGION"));
+    }
+
     @Bean(name = "amazonDynamoDB")
-    public AmazonDynamoDB amazonDynamoDB(AWSCredentialsProvider credentialsProvider) {
+    public AmazonDynamoDB amazonDynamoDB(AWSCredentialsProvider credentialsProvider, Regions regions) {
         return AmazonDynamoDBClientBuilder.standard()
                 .withCredentials(credentialsProvider)
-                .withRegion(Regions.EU_CENTRAL_1)
+                .withRegion(regions)
                 .build();
     }
 
     @Bean(name = "s3")
-    public AmazonS3 amazonS3(AWSCredentialsProvider credentialsProvider) {
+    public AmazonS3 amazonS3(AWSCredentialsProvider credentialsProvider, Regions regions) {
         return AmazonS3ClientBuilder.standard()
                 .withCredentials(credentialsProvider)
-                .withRegion(Regions.EU_CENTRAL_1)
+                .withRegion(regions)
                 .build();
     }
 }

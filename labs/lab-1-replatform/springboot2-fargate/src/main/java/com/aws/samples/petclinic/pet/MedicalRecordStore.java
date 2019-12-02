@@ -25,7 +25,7 @@ public class MedicalRecordStore {
         medicalRecord.setId(UUID.randomUUID().toString());
 
         amazonS3.putObject(new PutObjectRequest(
-                "cmr-lambda",
+                petsBucketName,
                 "medical-record/" + medicalRecord.getId(),
                 new ByteArrayInputStream(medicalRecord.getRecord().getBytes()),
                 null));
