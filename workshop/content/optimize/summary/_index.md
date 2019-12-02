@@ -11,11 +11,11 @@ pre = ""
 | AWS Java SDK v2         | 40        | 4884      | 5000                     |
 |                         |           |           |                          |
 | Reduce Dependencies     | 37        | 4303      | 4400                     |
-| Handler Interface       |           |           | 4200                     |
-| Packaging Mechanism     |           |           |                          |
+| Handler Interface       | 41        | 2880      | 4200                     |
+| Packaging Mechanism     | 40        | 4942      | 5000                     |
 | Multithreading          |           |           |                          |
 | Java 11                 |           |           |                          |
-| JVM Options             |           |           |                          |
+| JVM Options             | 41        | 5051      | 4900                     |
 | Prime Resources         |           |           |                          |
 | Lambda Layers           |           |           |                          |
 | ALB                     |           |           |                          |

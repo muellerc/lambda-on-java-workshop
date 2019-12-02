@@ -72,7 +72,43 @@
                             </includes>
                         </filter>
                         <filter>
+                            <artifact>software.amazon.awssdk:http-client-spi</artifact>
+                            <includes>
+                                <include>**</include>
+                            </includes>
+                        </filter>
+                        <filter>
+                            <artifact>software.amazon.awssdk:utils</artifact>
+                            <includes>
+                                <include>**</include>
+                            </includes>
+                        </filter>
+                        <filter>
+                            <artifact>software.amazon.awssdk:apache-client</artifact>
+                            <includes>
+                                <include>**</include>
+                            </includes>
+                        </filter>
+                        <filter>
+                            <artifact>org.apache.httpcomponents:httpcore</artifact>
+                            <includes>
+                                <include>**</include>
+                            </includes>
+                        </filter>
+                        <filter>
+                            <artifact>org.apache.httpcomponents:httpclient</artifact>
+                            <includes>
+                                <include>**</include>
+                            </includes>
+                        </filter>
+                        <filter>
                             <artifact>software.amazon.awssdk:s3</artifact>
+                            <includes>
+                                <include>**</include>
+                            </includes>
+                        </filter>
+                        <filter>
+                            <artifact>commons-logging:commons-logging</artifact>
                             <includes>
                                 <include>**</include>
                             </includes>

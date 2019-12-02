@@ -13,7 +13,7 @@ cd ~/environment/lambda-on-java-workshop/labs
 ls -lh lab-2-optimize/packaging-mechanism/target/app.jar
 ```
 
-It will report a package size of **7.4 MB**.
+It will report a package size of **8.5 MB**.
 
 To be able to run your function locally to analyse it in more detail, export your `AWS_REGION` as following:
 
@@ -33,7 +33,7 @@ java -cp lab-2-optimize/packaging-mechanism/target/app.jar -verbose:class com.aw
 java -cp lab-2-optimize/packaging-mechanism/target/app.jar -verbose:class com.aws.samples.petclinic.Main | grep '\[class,load\]' | wc -l
 ```
 
-It will report **4833 classes got loaded** to execute your AWS Lambda function.
+It will report **4983 classes got loaded** to execute your AWS Lambda function.
 
 To get a breakdown by package name, run the following command:
 
@@ -78,8 +78,6 @@ export FUNCTION_ARN=$(aws cloudformation describe-stacks \
 ## Memory Configuration
 
 We choose to go with 1024 MB for the load and performance tests.
-
-{{< figure src="packaging-mechanism/power-tuning.png" >}}
 
 ## Run The Load Tests
 

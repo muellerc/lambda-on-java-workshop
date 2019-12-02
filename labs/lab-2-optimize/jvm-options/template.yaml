@@ -18,7 +18,7 @@ Resources:
         Variables:
           TABLE_NAME: !ImportValue PetsTable
           BUCKET_NAME: !ImportValue PetsBucket
-          JAVA_TOOL_OPTIONS: '-Djava.compiler=NONE' # -Xmx1800m -Xms1800m -XX:+PrintCommandLineFlags -XX:+PrintGCDetails -XX:+PrintGCDateStamps
+          JAVA_TOOL_OPTIONS: '-Djava.compiler=NONE' # -Xms832m -Xmx832m -XX:+PrintCommandLineFlags -XX:+PrintGCDetails -XX:+PrintGCDateStamps
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !ImportValue PetsTable
