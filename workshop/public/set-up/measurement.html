@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<html lang="en" class="js csstransforms3d">
+<head>
+  <meta charset="utf-8">
+  <meta property="og:title" content="Lambda On Java Workshop" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="generator" content="Hugo 0.59.1" />
+  <meta name="description" content="Lambda On Java Workshop">
+<meta name="author" content="Jane Architect">
+
+  <link rel="shortcut icon" href="https://a0.awsstatic.com/libra-css/images/site/fav/favicon.ico" type="image/ico" />
+<link rel="icon" href="https://a0.awsstatic.com/libra-css/images/site/fav/favicon.ico" type="image/ico" />
+
+  <title>Measurement :: Lambda On Java Workshop</title>
+
+  
+  <link href="../css/nucleus.css" rel="stylesheet">
+  <link href="../css/fontawesome-all.min.css" rel="stylesheet">
+  <link href="../css/hybrid.css" rel="stylesheet">
+  <link href="../css/featherlight.min.css" rel="stylesheet">
+  <link href="../css/perfect-scrollbar.min.css" rel="stylesheet">
+  <link href="../css/auto-complete.css" rel="stylesheet">
+  <link href="../css/atom-one-dark-reasonable.css" rel="stylesheet">
+  <link href="../css/theme.css" rel="stylesheet">
+  <link href="../css/hugo-theme.css" rel="stylesheet">
+  
+  <link href="../css/theme-aws.css" rel="stylesheet">
+  
+  <link href="../css/jquery-ui.min.css" rel="stylesheet">
+  <script src="../js/jquery-3.3.1.min.js"></script>
+  <script src="../js/jquery-ui-1.12.1.min.js"></script>
+  
+
+  <style>
+    :root #header + #content > #left > #rlblock_left{
+        display:none !important;
+    }
+    
+      :not(pre) > code + span.copy-to-clipboard {
+          display: none;
+      }
+    
+  </style>
+  
+</head>
+
+<body class="" data-url="/set-up/measurement.html">
+  <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <div>
+    <a href="../" title="Go home">
+        <img style="vertical-align:middle" src="../images/logo.png" height="70px" />
+    </a>
+</div>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../js/lunr.min.js"></script>
+<script type="text/javascript" src="../js/auto-complete.js"></script>
+<script type="text/javascript">
+    
+        var baseurl = "";
+    
+</script>
+<script type="text/javascript" src="../js/search.js"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/set-up.html" title="Set-Up" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="../set-up.html">
+          Set-Up
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/set-up/measurement.html" title="Measurement" class="dd-item 
+        parent
+        active
+        
+        ">
+      <a href="../set-up/measurement.html">
+          Measurement
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+             
+            
+          
+             
+            
+          
+             
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/replatform.html" title="Replatform" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../replatform.html">
+          Lab 1: Replatform
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/replatform/springboot2-fargate.html" title="Springboot2 in Fargate" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../replatform/springboot2-fargate.html">
+          Springboot2 in Fargate
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/replatform/springboot2-lambda.html" title="Springboot2 Lambda" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../replatform/springboot2-lambda.html">
+          Springboot2 Lambda
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/replatform/python-lambda.html" title="Python Lambda" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../replatform/python-lambda.html">
+          Python Lambda
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/replatform/dagger2-lambda.html" title="Dagger2 Lambda" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../replatform/dagger2-lambda.html">
+          Dagger2 Lambda
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/replatform/no-di-framework-lambda.html" title="No DI Framework Lambda" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../replatform/no-di-framework-lambda.html">
+          No DI Framework Lambda
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/replatform/summary.html" title="Summary" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../replatform/summary.html">
+          Summary
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/optimize.html" title="Optimize" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../optimize.html">
+          Lab 2: Optimize
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/optimize/aws-java-sdk-v2.html" title="AWS Java SDK v2" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../optimize/aws-java-sdk-v2.html">
+          AWS Java SDK v2
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/optimize/reducing-dependencies.html" title="Reducing Dependencies" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../optimize/reducing-dependencies.html">
+          Reducing Dependencies
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/optimize/packaging-mechanism.html" title="Packaging Mechanism" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../optimize/packaging-mechanism.html">
+          Packaging Mechanism
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/optimize/jvm-options.html" title="JVM Options" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../optimize/jvm-options.html">
+          JVM Options
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/optimize/handler-interface.html" title="Handler Interface" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../optimize/handler-interface.html">
+          Handler Interface
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/optimize/multithreading.html" title="Multithreading" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../optimize/multithreading.html">
+          Multithreading
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/optimize/prime-resources.html" title="Prime Resources" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../optimize/prime-resources.html">
+          Prime Resources
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/optimize/lambda-layers.html" title="Lambda Layers" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../optimize/lambda-layers.html">
+          Lambda Layers
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/optimize/java-11.html" title="Java 11" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../optimize/java-11.html">
+          Java 11
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/optimize/corretto-crypto-provider.html" title="Amazon Corretto Crypto Provider" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../optimize/corretto-crypto-provider.html">
+          Amazon Corretto Crypto Provider
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/optimize/application-load-balancer.html" title="Application Load Balancer" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../optimize/application-load-balancer.html">
+          Application Load Balancer
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/optimize/summary.html" title="Summary" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../optimize/summary.html">
+          Summary
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/rearchitect.html" title="Rearchitect" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../rearchitect.html">
+          Lab 3: Rearchitect
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/rearchitect/graalvm.html" title="GraalVM" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../rearchitect/graalvm.html">
+          GraalVM
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/rearchitect/summary.html" title="Summary" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../rearchitect/summary.html">
+          Summary
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/clean-up.html" title="Clean-Up" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../clean-up.html">
+          Clean-Up
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3></h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://github.com/muellerc/lambda-on-java-workshop/"><i class='fab fa-github'></i> Github repo</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="footer">
+      <left>
+
+    <h5 class="copyright">&copy; 2019 Amazon Web Services, Inc. or its Affiliates. All rights reserved.<h5>
+
+</left>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+
+  <section id="body">
+    <div id="overlay"></div>
+    <div class="padding highlightable">
+      
+      <div>
+        <div id="top-bar">
+          
+          
+          
+          
+          <div id="top-github-link">
+            <a class="github-link" title='Edit this page' href="https://github.com/muellerc/lambda-on-java-workshop/workshop/set-up/measurement/_index.md"
+              target="blank">
+              <i class="fas fa-code-branch"></i>
+              <span id="top-github-link-text">Edit this page</span>
+            </a>
+          </div>
+          
+          
+          
+          <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+            <span id="sidebar-toggle-span">
+              <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                <i class="fa fa-bars"></i>
+              </a>
+            </span>
+            
+            <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+            
+            <span class="links">
+              
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href='../'>Lambda On Java Workshop</a> > <a href='../set-up.html'>Set-Up</a> > Measurement
+          
+          
+          
+          
+          
+          
+            </span>
+          </div>
+          
+          <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#how-do-we-measure-performance-throughput">How do we measure performance &amp; throughput</a>
+<ul>
+<li><a href="#gatling">Gatling</a></li>
+<li><a href="#amazon-x-ray">Amazon X-Ray</a></li>
+<li><a href="#javaagent-instrumentation">Javaagent Instrumentation</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+          
+        </div>
+      </div>
+      
+
+      
+        <div id="body-inner">
+          <h1>Measurement</h1>
+          
+          
+
+
+
+	
+
+<h2 id="how-do-we-measure-performance-throughput">How do we measure performance &amp; throughput</h2>
+
+<p>To determine the behavior under load, we are running a load test for 1 minute, starting with 1 user (which determines the concurrency) and increase it linearly, until we reached 20 users after one minute (meaning we are increasing the concurrency by 1 after each 3 seconds for 1 minute). We are running this test 10 times per service implementation against a new deployed instance and report the best result.</p>
+
+<p>To determine the cold-start time, we are measure 10 cold-starts and report the best one for each service implementation.</p>
+
+<p>The load test is running in an AWS Cloud9 instance (m5.large) in the same region as we have deployed our services.</p>
+
+<h3 id="gatling">Gatling</h3>
+
+<p>We are using the Scala based load generating tool <strong><a href="https://gatling.io/" target="_blank">Gatling</a></strong> to load test our different service implementations. Each service comes with a Scala based load test in the folder <code>src/test/scala/xxxLoadTest.scala</code>.</p>
+
+<p>In a future version, we may integrate the load test scenario directly into our Maven project, leveraging the <strong><a href="https://gatling.io/docs/2.3/extensions/maven_plugin" target="_blank">Gatling Maven Plugin</a></strong>.</p>
+
+<p>At the end of a load test, Gatling creates a nice report about the performance and throughput from a client perspective:<br />
+<img src="measurement/sample_gatling_report_1.png" alt="Sample Gatling Report 1" />
+<img src="measurement/sample_gatling_report_2.png" alt="Sample Gatling Report 2" /></p>
+
+<p>To get started with Gatling, please follow the <strong><a href="https://gatling.io/docs/current/quickstart/" target="_blank">Quickstart</a></strong> and the <strong><a href="https://gatling.io/docs/current/advanced_tutorial/" target="_blank">Advanced Tutorial</a></strong>.</p>
+
+<h3 id="amazon-x-ray">Amazon X-Ray</h3>
+
+<p>In addition, we are using <strong><a href="https://aws.amazon.com/xray/" target="_blank">AWS X-Ray</a></strong> to sample some requests to get better insights where we spend our time by processing these requests.</p>
+
+<p><img src="measurement/x-ray.png" alt="X-Ray" /></p>
+
+<h3 id="javaagent-instrumentation">Javaagent Instrumentation</h3>
+
+<p>Because we have situations where we don&rsquo;t want or cannot use Amazon X-Ray, we use <strong><a href="https://github.com/mvd199/javaagent-instrumentation" target="_blank">Javaagent Instrumentation</a></strong> in addition to get better insights.</p>
+
+<p>You will get similar output like this (package names dropped), which gives you an idea where you spend most of the time executing the request. You have to specify the classes, which should be instrumented:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ApacheHttpClient.createClient<span style="color:#f92672">(</span>ApacheHttpClient$DefaultBuilder,AttributeMap<span style="color:#f92672">)</span> : <span style="color:#ae81ff">323</span>
+DefaultDynamoDbClient.init<span style="color:#f92672">(</span>BaseAwsJsonProtocolFactory$Builder<span style="color:#f92672">)</span> : <span style="color:#ae81ff">79</span>
+ObjectMapper._findRootDeserializer<span style="color:#f92672">(</span>DeserializationContext,JavaType<span style="color:#f92672">)</span> : <span style="color:#ae81ff">140</span>
+ObjectMapper._readMapAndClose<span style="color:#f92672">(</span>JsonParser,JavaType<span style="color:#f92672">)</span> : <span style="color:#ae81ff">142</span>
+ObjectMapper.readValue<span style="color:#f92672">(</span>String,JavaType<span style="color:#f92672">)</span> : <span style="color:#ae81ff">161</span>
+ObjectMapper.readValue<span style="color:#f92672">(</span>java.lang.String,java.lang.Class<span style="color:#f92672">)</span> : <span style="color:#ae81ff">165</span>
+ApacheHttpClient.execute<span style="color:#f92672">(</span>HttpRequestBase<span style="color:#f92672">)</span> : <span style="color:#ae81ff">429</span>
+ApacheHttpClient.access$500<span style="color:#f92672">(</span>ApacheHttpClient,HttpRequestBase<span style="color:#f92672">)</span> : <span style="color:#ae81ff">429</span>
+DefaultDynamoDbClient.putItem<span style="color:#f92672">(</span>PutItemRequest<span style="color:#f92672">)</span> : <span style="color:#ae81ff">707</span>
+ApacheHttpClient.execute<span style="color:#f92672">(</span>HttpRequestBase<span style="color:#f92672">)</span> : <span style="color:#ae81ff">251</span>
+ApacheHttpClient.access$500<span style="color:#f92672">(</span>ApacheHttpClient,HttpRequestBase<span style="color:#f92672">)</span> : <span style="color:#ae81ff">251</span>
+DefaultS3Client.putObject<span style="color:#f92672">(</span>PutObjectRequest,RequestBody<span style="color:#f92672">)</span> : <span style="color:#ae81ff">329</span>
+CreatePetLambdaHandler.handleRequest<span style="color:#f92672">(</span>APIGatewayV2ProxyRequestEvent,Context<span style="color:#f92672">)</span> : <span style="color:#ae81ff">1428</span></code></pre></div>
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+        
+                    
+                        
+            
+            
+        
+                    
+                        
+            
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../set-up.html" title="Set-Up"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="../replatform.html" title="Replatform" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../js/clipboard.min.js"></script>
+    <script src="../js/perfect-scrollbar.min.js"></script>
+    <script src="../js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="../js/jquery.sticky.js"></script>
+    <script src="../js/featherlight.min.js"></script>
+    <script src="../js/html5shiv-printshiv.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../js/modernizr.custom-3.6.0.js"></script>
+    <script src="../js/learn.js"></script>
+    <script src="../js/hugo-learn.js"></script>
+
+    <link href="../mermaid/mermaid.css" rel="stylesheet" />
+    <script src="../mermaid/mermaid.js"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+  </body>
+</html>
