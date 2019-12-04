@@ -17,8 +17,6 @@ public class MedicalRecordStore {
     }
 
     public MedicalRecord save(MedicalRecord medicalRecord) {
-        medicalRecord.setId(UUID.randomUUID().toString());
-
         s3Client.putObject(
                 PutObjectRequest.builder()
                     .bucket(bucket)

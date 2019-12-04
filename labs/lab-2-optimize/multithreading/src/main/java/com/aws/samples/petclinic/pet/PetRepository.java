@@ -19,6 +19,8 @@ public class PetRepository {
     }
 
     public Pet save(Pet pet) {
+        System.out.println("petRepository");
+
         dynamoDbClient.putItem(PutItemRequest.builder()
                 .tableName(table)
                 .item(asItem(pet))

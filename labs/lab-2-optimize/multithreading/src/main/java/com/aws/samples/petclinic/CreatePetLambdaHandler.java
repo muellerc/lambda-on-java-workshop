@@ -23,6 +23,7 @@ public class CreatePetLambdaHandler implements RequestHandler<APIGatewayV2ProxyR
 
     private PetService service;
     private ObjectMapper objectMapper;
+    ExecutorService executorService;
 
     public CreatePetLambdaHandler() {
         objectMapper = new ObjectMapper();
@@ -36,7 +37,7 @@ public class CreatePetLambdaHandler implements RequestHandler<APIGatewayV2ProxyR
         AwsCredentialsProvider credentialsProvider = DefaultCredentialsProvider.create();
 
         DynamoDbClient dynamoDbClient = DynamoDbClient.builder()
-                .credentialsProvider(credentialsProvider)
+                .credentialsProvider(DefaultCredentialsProvider.create())
                 .region(regions)
                 .overrideConfiguration(ClientOverrideConfiguration.builder()
 //                        .addExecutionInterceptor(new TracingInterceptor())
@@ -47,7 +48,7 @@ public class CreatePetLambdaHandler implements RequestHandler<APIGatewayV2ProxyR
         PetRepository repository = new PetRepository(dynamoDbClient, table);
 
         S3Client s3Client = S3Client.builder()
-                .credentialsProvider(credentialsProvider)
+                .credentialsProvider(DefaultCredentialsProvider.create())
                 .region(regions)
                 .overrideConfiguration(ClientOverrideConfiguration.builder()
 //                        .addExecutionInterceptor(new TracingInterceptor())
@@ -57,28 +58,24 @@ public class CreatePetLambdaHandler implements RequestHandler<APIGatewayV2ProxyR
 
         MedicalRecordStore medicalRecordStore = new MedicalRecordStore(s3Client, bucket);
 
-        ExecutorService executorService = Executors.newFixedThreadPool(2);
+        executorService = Executors.newFixedThreadPool(2);
 
         service = new PetService(executorService, repository, medicalRecordStore);
     }
 
     @Override
     public APIGatewayV2ProxyResponseEvent handleRequest(APIGatewayV2ProxyRequestEvent input, Context context) {
-//        Subsegment injectorSegment = AWSXRay.beginSubsegment("handleRequest");
-
         APIGatewayV2ProxyResponseEvent response = new APIGatewayV2ProxyResponseEvent();
         response.setStatusCode(200);
 
         try {
             PetRecord petRecord = objectMapper.readValue(input.getBody(), PetRecord.class);
             petRecord = service.addPet(petRecord);
+
             response.setBody(objectMapper.writeValueAsString(petRecord));
         } catch (Exception e) {
             response.setStatusCode(500);
             e.printStackTrace();
-//            injectorSegment.addException(e);
-        } finally {
-//            AWSXRay.endSubsegment();
         }
 
         return response;

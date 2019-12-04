@@ -17,5 +17,8 @@ public class Main {
         Context context = null;
 
         APIGatewayV2ProxyResponseEvent response = handler.handleRequest(request, context);
+        handler.executorService.shutdownNow();
+
+        System.out.println("response:" + response);
     }
 }
