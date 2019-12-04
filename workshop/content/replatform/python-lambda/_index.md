@@ -1,6 +1,6 @@
 +++
 title = "Python Lambda"
-weight = 13
+weight = 12
 pre = ""
 +++
 

@@ -33,7 +33,7 @@ java -cp lab-2-optimize/multithreading/target/app.jar -verbose:class com.aws.sam
 java -cp lab-2-optimize/multithreading/target/app.jar -verbose:class com.aws.samples.petclinic.Main | grep '\[class,load\]' | wc -l
 ```
 
-It will report **??? classes got loaded** to execute your AWS Lambda function.
+It will report **4938 classes got loaded** to execute your AWS Lambda function.
 
 To get a breakdown by package name, run the following command:
 
@@ -77,7 +77,9 @@ export FUNCTION_ARN=$(aws cloudformation describe-stacks \
 
 ## Memory Configuration
 
-We choose to go with 1024 MB for the load and performance tests.
+We choose to go with 2048 MB for the load and performance tests.
+
+{{< figure src="multithreading/power-tuning.png" >}}
 
 ## Run The Load Tests
 
