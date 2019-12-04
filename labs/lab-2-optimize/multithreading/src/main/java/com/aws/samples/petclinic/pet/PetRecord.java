@@ -46,7 +46,7 @@ public class PetRecord implements Serializable {
         return this.medicalRecord;
     }
 
-    protected void setMedicalRecord(String medicalRecord) {
+    public void setMedicalRecord(String medicalRecord) {
         this.medicalRecord = medicalRecord;
     }
 }

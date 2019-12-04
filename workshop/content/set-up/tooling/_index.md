@@ -20,7 +20,7 @@ The easiest way is to install it via the **[AWS Serverless Application Repositor
 
 A sample visualization with recommendations looks like this:
 
-![AWS Lambda Power Tuning](tooling/aws-lambda-power-tuning.png)
+{{< figure src="tooling/aws-lambda-power-tuning.png" >}}
 
 ### Gatling
 

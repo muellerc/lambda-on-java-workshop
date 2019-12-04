@@ -17,6 +17,7 @@
       <module fileurl="file://$PROJECT_DIR$/lab-2-optimize/lambda-layers/lambda-layers.iml" filepath="$PROJECT_DIR$/lab-2-optimize/lambda-layers/lambda-layers.iml" />
       <module fileurl="file://$PROJECT_DIR$/lab-2-optimize/multithreading/multithreading.iml" filepath="$PROJECT_DIR$/lab-2-optimize/multithreading/multithreading.iml" />
       <module fileurl="file://$PROJECT_DIR$/lab-1-replatform/no-di-framework-lambda/no-di-framework-lambda.iml" filepath="$PROJECT_DIR$/lab-1-replatform/no-di-framework-lambda/no-di-framework-lambda.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab-2-optimize/optimized/optimized.iml" filepath="$PROJECT_DIR$/lab-2-optimize/optimized/optimized.iml" />
       <module fileurl="file://$PROJECT_DIR$/lab-2-optimize/packaging-mechanism/packaging-mechanism.iml" filepath="$PROJECT_DIR$/lab-2-optimize/packaging-mechanism/packaging-mechanism.iml" />
       <module fileurl="file://$PROJECT_DIR$/lab-2-optimize/prime-resources/prime-resources.iml" filepath="$PROJECT_DIR$/lab-2-optimize/prime-resources/prime-resources.iml" />
       <module fileurl="file://$PROJECT_DIR$/lab-2-optimize/reducing-dependencies/reducing-dependencies.iml" filepath="$PROJECT_DIR$/lab-2-optimize/reducing-dependencies/reducing-dependencies.iml" />

@@ -37,7 +37,7 @@ public class CreatePetLambdaHandler implements RequestHandler<APIGatewayV2ProxyR
         AwsCredentialsProvider credentialsProvider = DefaultCredentialsProvider.create();
 
         DynamoDbClient dynamoDbClient = DynamoDbClient.builder()
-                .credentialsProvider(DefaultCredentialsProvider.create())
+                .credentialsProvider(credentialsProvider)
                 .region(regions)
                 .overrideConfiguration(ClientOverrideConfiguration.builder()
 //                        .addExecutionInterceptor(new TracingInterceptor())
@@ -48,7 +48,7 @@ public class CreatePetLambdaHandler implements RequestHandler<APIGatewayV2ProxyR
         PetRepository repository = new PetRepository(dynamoDbClient, table);
 
         S3Client s3Client = S3Client.builder()
-                .credentialsProvider(DefaultCredentialsProvider.create())
+                .credentialsProvider(credentialsProvider)
                 .region(regions)
                 .overrideConfiguration(ClientOverrideConfiguration.builder()
 //                        .addExecutionInterceptor(new TracingInterceptor())
