@@ -15,16 +15,6 @@ ls -lh lab-2-optimize/optimized-singlethreaded/target/app.jar
 
 It will report a package size of **7.3 MB**.
 
-To be able to run your function locally to analyse it in more detail, export your `AWS_REGION` as following:
-
-```bash
-export AWS_REGION=$(aws --profile default configure get region)
-export AWS_ACCESS_KEY_ID=$(aws --profile default configure get aws_access_key_id) 
-export AWS_SECRET_ACCESS_KEY=$(aws --profile default configure get aws_secret_access_key)
-export TABLE_NAME=$(aws cloudformation describe-stacks --stack-name lambda-java-workshop --query 'Stacks[].Outputs[?OutputKey==`PetsTable`].OutputValue' --output text)
-export BUCKET_NAME=$(aws cloudformation describe-stacks --stack-name lambda-java-workshop --query 'Stacks[].Outputs[?OutputKey==`PetsBucket`].OutputValue' --output text)
-```
-
 To determine the number of classes which gets loaded to execute your function, run the following command in the bash window in your AWS Cloud9 IDE. Each application contains a helper Main class which invokes your AWS Lambda function locally:
 
 ```bash
