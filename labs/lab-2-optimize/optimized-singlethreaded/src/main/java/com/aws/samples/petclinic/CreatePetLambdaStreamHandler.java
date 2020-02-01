@@ -43,7 +43,7 @@ public class CreatePetLambdaStreamHandler implements RequestStreamHandler {
 
         AwsCredentialsProvider credentialsProvider = EnvironmentVariableCredentialsProvider.create();
 
-        SdkHttpClient dynamoDbDdkHttpCli    ent = UrlConnectionHttpClient.builder().build();
+        SdkHttpClient dynamoDbDdkHttpClient = UrlConnectionHttpClient.builder().build();
 
         DynamoDbClient dynamoDbClient = DynamoDbClient.builder()
                 .httpClient(dynamoDbDdkHttpClient)
