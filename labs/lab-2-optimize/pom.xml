@@ -25,6 +25,7 @@
         <module>prime-resources</module>
         <module>application-load-balancer</module>
         <module>multithreading</module>
+        <module>optimized-singlethreaded</module>
         <module>optimized</module>
     </modules>
 </project>

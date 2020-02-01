@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+    <output url="file://$MODULE_DIR$/target/classes" />
+    <output-test url="file://$MODULE_DIR$/target/test-classes" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:dynamodb:2.10.25" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:aws-json-protocol:2.10.25" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.10.0" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:protocol-core:2.10.25" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:sdk-core:2.10.25" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:profiles:2.10.25" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.10.0" level="project" />
+    <orderEntry type="library" name="Maven: org.reactivestreams:reactive-streams:1.0.2" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:auth:2.10.25" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.eventstream:eventstream:1.0.1" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:http-client-spi:2.10.25" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:regions:2.10.25" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.0" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:annotations:2.10.25" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:utils:2.10.25" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:aws-core:2.10.25" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:s3:2.10.25" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:aws-xml-protocol:2.10.25" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:aws-query-protocol:2.10.25" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:url-connection-client:2.10.12" level="project" />
+    <orderEntry type="library" name="Maven: com.amazonaws:aws-lambda-java-core:1.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-simple:1.7.28" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.28" level="project" />
+  </component>
+</module>
