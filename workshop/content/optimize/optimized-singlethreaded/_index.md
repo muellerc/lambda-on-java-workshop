@@ -77,7 +77,7 @@ export FUNCTION_ARN=$(aws cloudformation describe-stacks \
 
 We choose to go with 1024 MB for the load and performance tests.
 
-{{< figure src="optimized/power-tuning.png" >}}
+{{< figure src="optimized-singlethreaded/power-tuning.png" >}}
 
 ## Run The Load Tests
 
@@ -96,12 +96,12 @@ for i in {1..10}; do aws lambda update-function-configuration --function-name $F
 
 ### Gatling Load Test Result (best out of 10)
 
-{{< figure src="optimized/gatling-1.png" height="400" >}}
-{{< figure src="optimized/gatling-2.png" height="400" >}}
+{{< figure src="optimized-singlethreaded/gatling-1.png" height="400" >}}
+{{< figure src="optimized-singlethreaded/gatling-2.png" height="400" >}}
 
 ### Amazon X-Ray Cold-Start Trace (best out of 10)
 
-{{< figure src="optimized/x-ray.png" >}}
+{{< figure src="optimized-singlethreaded/x-ray.png" >}}
 
 ## Source Code
 
