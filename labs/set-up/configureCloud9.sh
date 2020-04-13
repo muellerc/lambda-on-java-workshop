@@ -15,28 +15,29 @@ sudo rm -rf /var/cache/yum
 # update to the latest version of SAM CLI (and AWS CLI and PIP3)
 echo "update to the latest version of SAM CLI (and AWS CLI and PIP3)"
 # sudo pip uninstall aws-sam-cli -y
-sudo pip uninstall awscli -y
-sudo python -m pip uninstall pip -y
+#sudo pip uninstall awscli -y
+#sudo python -m pip uninstall pip -y
 
-sudo alternatives --set python /usr/bin/python3.6
+sudo pip install --upgrade pip
 
-curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-sudo python get-pip.py
+#sudo alternatives --set python /usr/bin/python3.6
 
-sudo /usr/local/bin/pip install awscli
-sudo /usr/local/bin/pip install aws-sam-cli
-sudo /usr/local/bin/pip install cfn-lint
+#curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+#sudo python get-pip.py
 
-# Install GraalVM 19.3.1
-echo "Install GraalVM 19.3.1"
-#wget https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-19.3.1/graalvm-ce-java8-linux-amd64-19.3.1.tar.gz
-wget https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-19.3.1/graalvm-ce-java11-linux-amd64-19.3.1.tar.gz
-tar -xzvf graalvm-ce-java11-linux-amd64-19.3.1.tar.gz
-rm -rf graalvm-ce-java11-linux-amd64-19.3.1.tar.gz
-echo 'export GRAALVM_HOME=/home/ec2-user/environment/graalvm-ce-java11-19.3.1' >> ~/.bashrc
-echo 'export JAVA_HOME=/home/ec2-user/environment/graalvm-ce-java11-19.3.1' >> ~/.bashrc
+#sudo /usr/local/bin/pip install awscli
+#sudo /usr/local/bin/pip install aws-sam-cli
+#sudo /usr/local/bin/pip install cfn-lint
+
+# Install GraalVM 20.0.0
+echo "Install GraalVM 20.0.0"
+wget https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-20.0.0/graalvm-ce-java11-linux-amd64-20.0.0.tar.gz
+tar -xzvf graalvm-ce-java11-linux-amd64-20.0.0.tar.gz
+rm -rf graalvm-ce-java11-linux-amd64-20.0.0.tar.gz
+echo 'export GRAALVM_HOME=/home/ec2-user/environment/graalvm-ce-java11-20.0.0' >> ~/.bashrc
+echo 'export JAVA_HOME=/home/ec2-user/environment/graalvm-ce-java11-20.0.0' >> ~/.bashrc
 echo 'export PATH="$PATH:$GRAALVM_HOME/bin"' >> ~/.bashrc
-/home/ec2-user/environment/graalvm-ce-java11-19.3.1/bin/gu install native-image
+/home/ec2-user/environment/graalvm-ce-java11-20.0.0/bin/gu install native-image
 
 # Install Scala 2.12.10
 echo "Install Scala 2.12.10"
