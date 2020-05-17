@@ -63,6 +63,12 @@ sam deploy --template lab-2-optimize/optimized-singlethreaded/template.yaml \
     --stack-name optimized-singlethreaded \
     --capabilities CAPABILITY_IAM \
     --guided
+```
+
+Follow the instructions and make sure your are chosing the right region.
+Export the service endpoint url and the function ARN as environment variables for easy access:
+
+```bash
 export ENDPOINT=$(aws cloudformation describe-stacks \
     --stack-name optimized-singlethreaded \
     --query 'Stacks[].Outputs[?OutputKey==`PetsApiServiceURL`].OutputValue' \

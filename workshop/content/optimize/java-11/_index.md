@@ -62,12 +62,16 @@ You will a similar output like this (package names dropped), which gives you an 
 To deploy the application, run the following command. It also exports the service endpoint url and the function ARN as environment variables for easy access:
 
 ```bash
-sam package --template-file lab-2-optimize/java-11/template.yaml \
-    --output-template-file lab-2-optimize/java-11/packaged.yaml \
-    --s3-bucket $SAM_ARTIFACT_BUCKET
-sam deploy --template-file lab-2-optimize/java-11/packaged.yaml \
+sam deploy --template-file lab-2-optimize/java-11/template.yaml \
     --stack-name java-11 \
-    --capabilities CAPABILITY_IAM
+    --capabilities CAPABILITY_IAM \
+    --guided
+```
+
+Follow the instructions and make sure your are chosing the right region.
+Export the service endpoint url and the function ARN as environment variables for easy access:
+
+```bash
 export ENDPOINT=$(aws cloudformation describe-stacks \
     --stack-name java-11 \
     --query 'Stacks[].Outputs[?OutputKey==`PetsApiServiceURL`].OutputValue' \

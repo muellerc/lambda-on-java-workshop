@@ -59,12 +59,16 @@ You will a similar output like this (package names dropped), which gives you an 
 To deploy the application, run the following command. It also exports the service endpoint url and the function ARN as environment variables for easy access:
 
 ```bash
-sam package --template-file lab-2-optimize/packaging-mechanism/template.yaml \
-    --output-template-file lab-2-optimize/packaging-mechanism/packaged.yaml \
-    --s3-bucket $SAM_ARTIFACT_BUCKET
-sam deploy --template-file lab-2-optimize/packaging-mechanism/packaged.yaml \
+sam deploy --template-file lab-2-optimize/packaging-mechanism/template.yaml \
     --stack-name packaging-mechanism \
-    --capabilities CAPABILITY_IAM
+    --capabilities CAPABILITY_IAM \
+    --guided
+```
+
+Follow the instructions and make sure your are chosing the right region.
+Export the service endpoint url and the function ARN as environment variables for easy access:
+
+```bash
 export ENDPOINT=$(aws cloudformation describe-stacks \
     --stack-name packaging-mechanism \
     --query 'Stacks[].Outputs[?OutputKey==`PetsApiServiceURL`].OutputValue' \
