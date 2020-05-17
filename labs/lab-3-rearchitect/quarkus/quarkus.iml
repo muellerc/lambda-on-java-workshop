@@ -34,28 +34,33 @@
     <orderEntry type="library" name="Maven: org.eclipse.microprofile.context-propagation:microprofile-context-propagation-api:1.0.1" level="project" />
     <orderEntry type="library" name="Maven: io.quarkus:quarkus-jackson:1.2.1.Final" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.10.2" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.10.2" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.10.2" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.10.2" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.10.2" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.module:jackson-module-parameter-names:2.10.2" level="project" />
     <orderEntry type="library" name="Maven: io.quarkus:quarkus-amazon-dynamodb:1.2.1.Final" level="project" />
     <orderEntry type="library" name="Maven: io.quarkus:quarkus-netty:1.2.1.Final" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-codec:4.1.42.Final" level="project" />
-    <orderEntry type="library" name="Maven: io.netty:netty-common:4.1.42.Final" level="project" />
-    <orderEntry type="library" name="Maven: io.netty:netty-buffer:4.1.42.Final" level="project" />
-    <orderEntry type="library" name="Maven: io.netty:netty-transport:4.1.42.Final" level="project" />
-    <orderEntry type="library" name="Maven: io.netty:netty-resolver:4.1.42.Final" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-handler:4.1.42.Final" level="project" />
     <orderEntry type="library" name="Maven: software.amazon.awssdk:dynamodb:2.10.3" level="project" />
     <orderEntry type="library" name="Maven: software.amazon.awssdk:aws-json-protocol:2.10.3" level="project" />
-    <orderEntry type="library" name="Maven: software.amazon.awssdk:protocol-core:2.10.3" level="project" />
-    <orderEntry type="library" name="Maven: software.amazon.awssdk:sdk-core:2.10.3" level="project" />
-    <orderEntry type="library" name="Maven: software.amazon.awssdk:profiles:2.10.3" level="project" />
-    <orderEntry type="library" name="Maven: software.amazon.awssdk:auth:2.10.3" level="project" />
+    <orderEntry type="library" name="Maven: org.jboss.logging:commons-logging-jboss-logging:1.0.0.Final" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:s3:2.13.18" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:aws-xml-protocol:2.13.18" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:aws-query-protocol:2.13.18" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:protocol-core:2.13.18" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:arns:2.13.18" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:profiles:2.13.18" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:sdk-core:2.13.18" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.10.2" level="project" />
+    <orderEntry type="library" name="Maven: org.reactivestreams:reactive-streams:1.0.3" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:auth:2.13.18" level="project" />
     <orderEntry type="library" name="Maven: software.amazon.eventstream:eventstream:1.0.1" level="project" />
-    <orderEntry type="library" name="Maven: software.amazon.awssdk:regions:2.10.3" level="project" />
-    <orderEntry type="library" name="Maven: software.amazon.awssdk:aws-core:2.10.3" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:http-client-spi:2.13.18" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:regions:2.13.18" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.10.2" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:annotations:2.13.18" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:utils:2.13.18" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:aws-core:2.13.18" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: software.amazon.awssdk:apache-client:2.10.3" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.httpcomponents:httpclient:4.5.10" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: commons-logging:commons-logging:1.2" level="project" />
@@ -64,16 +69,15 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: software.amazon.awssdk:netty-nio-client:2.10.3" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: io.netty:netty-codec-http:4.1.42.Final" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: io.netty:netty-codec-http2:4.1.42.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-transport:4.1.42.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-resolver:4.1.42.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-common:4.1.42.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-buffer:4.1.42.Final" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: io.netty:netty-transport-native-epoll:linux-x86_64:4.1.42.Final" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: io.netty:netty-transport-native-unix-common:4.1.42.Final" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.typesafe.netty:netty-reactive-streams-http:2.0.3" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.typesafe.netty:netty-reactive-streams:2.0.3" level="project" />
-    <orderEntry type="library" name="Maven: org.jboss.logging:commons-logging-jboss-logging:1.0.0.Final" level="project" />
     <orderEntry type="library" name="Maven: software.amazon.awssdk:url-connection-client:2.10.3" level="project" />
-    <orderEntry type="library" name="Maven: software.amazon.awssdk:utils:2.10.3" level="project" />
-    <orderEntry type="library" name="Maven: org.reactivestreams:reactive-streams:1.0.3" level="project" />
-    <orderEntry type="library" name="Maven: software.amazon.awssdk:annotations:2.10.3" level="project" />
-    <orderEntry type="library" name="Maven: software.amazon.awssdk:http-client-spi:2.10.3" level="project" />
     <orderEntry type="library" name="Maven: com.amazonaws:aws-lambda-java-events:2.2.9" level="project" />
     <orderEntry type="library" name="Maven: joda-time:joda-time:2.6" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-simple:1.7.28" level="project" />

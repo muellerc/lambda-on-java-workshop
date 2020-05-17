@@ -3,6 +3,7 @@ package com.aws.samples.petclinic.pet;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider;
 import software.amazon.awssdk.core.client.config.ClientOverrideConfiguration;
 import software.amazon.awssdk.http.urlconnection.UrlConnectionHttpClient;
@@ -25,8 +26,11 @@ public class PetRepository {
     @Inject
     DynamoDbClient dynamoDbClient;
 
+    @ConfigProperty(name = "tableName")
+    String tableName;
+
     public Iterable<Pet> findAll() {
-        ScanResponse response = dynamoDbClient.scan(ScanRequest.builder().tableName("Pets").build());
+        ScanResponse response = dynamoDbClient.scan(ScanRequest.builder().tableName(tableName).build());
 
         List<Pet> pets = new ArrayList<>();
         for (Map<String, AttributeValue> item : response.items()) {
@@ -44,7 +48,7 @@ public class PetRepository {
         pet.setId(UUID.randomUUID().toString());
 
         dynamoDbClient.putItem(PutItemRequest.builder()
-                .tableName("Pets")
+                .tableName(tableName)
                 .item(asItem(pet))
                 .build());
 

@@ -7,7 +7,7 @@ Globals:
     TracingEnabled: True
 
 Resources:
-  PetStoreFunction:
+  CreatePetLambdaHandlerFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: does.not::matter

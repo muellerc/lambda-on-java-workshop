@@ -5,6 +5,7 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2ProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2ProxyResponseEvent;
 import com.aws.samples.petclinic.pet.Pet;
+import com.aws.samples.petclinic.pet.PetRecord;
 import com.aws.samples.petclinic.pet.PetService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -28,7 +29,7 @@ public class LambdaHandlerCreatePet implements RequestHandler<APIGatewayV2ProxyR
         response.setStatusCode(200);
 
         try {
-            Pet pet = objectMapper.readValue(input.getBody(), Pet.class);
+            PetRecord pet = objectMapper.readValue(input.getBody(), PetRecord.class);
             pet = service.addPet(pet);
             response.setBody(objectMapper.writeValueAsString(pet));
         } catch (Exception e) {

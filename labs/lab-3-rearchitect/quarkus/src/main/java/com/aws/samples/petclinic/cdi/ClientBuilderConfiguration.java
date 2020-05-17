@@ -16,6 +16,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import io.quarkus.arc.DefaultBean;
+import software.amazon.awssdk.services.s3.S3Client;
 
 @Dependent
 public class ClientBuilderConfiguration {
@@ -42,6 +43,17 @@ public class ClientBuilderConfiguration {
                 .credentialsProvider(credentialsProvider)
                 .region(region)
                 .endpointOverride(new URI(String.format("https://dynamodb.%s.amazonaws.com", region.id())))
+                .overrideConfiguration(ClientOverrideConfiguration.builder().build())
+                .build();
+    }
+
+    @Produces @DefaultBean
+    public S3Client buildS3Client(Region region, AwsCredentialsProvider credentialsProvider, SdkHttpClient sdkHttpClient) throws URISyntaxException {
+        return S3Client.builder()
+                .httpClient(sdkHttpClient)
+                .credentialsProvider(credentialsProvider)
+                .region(region)
+                .endpointOverride(new URI(String.format("https://s3.%s.amazonaws.com", region.id())))
                 .overrideConfiguration(ClientOverrideConfiguration.builder().build())
                 .build();
     }

@@ -3,6 +3,7 @@ package com.aws.samples.petclinic.pet;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.util.Optional;
+import java.util.UUID;
 
 @ApplicationScoped
 public class PetService {
@@ -10,23 +11,15 @@ public class PetService {
     @Inject
     PetRepository petRepository;
 
-    public Iterable<Pet> getAllPets() {
-        return petRepository.findAll();
-    }
+    @Inject
+    MedicalRecordStore medicalRecordStore;
 
-    public PetService(PetRepository petRepository) {
-        this.petRepository = petRepository;
-    }
+    public PetRecord addPet(PetRecord petRecord) {
+        petRecord.setId(UUID.randomUUID().toString());
 
-    public Optional<Pet> getPet(String id) {
-        return petRepository.findById(id);
-    }
+        petRepository.save(new Pet(petRecord.getId(), petRecord.getName(), petRecord.getType(), petRecord.getBirthday()));
+        medicalRecordStore.save(new MedicalRecord(petRecord.getId(), petRecord.getMedicalRecord()));
 
-    public Pet addPet(Pet pet) {
-        return petRepository.save(pet);
-    }
-
-    public void deletePet(Pet pet) {
-        petRepository.delete(pet);
+        return petRecord;
     }
 }

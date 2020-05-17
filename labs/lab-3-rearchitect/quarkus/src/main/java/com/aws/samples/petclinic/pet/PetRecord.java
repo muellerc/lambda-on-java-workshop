@@ -1,24 +1,14 @@
 package com.aws.samples.petclinic.pet;
 
-import io.quarkus.runtime.annotations.RegisterForReflection;
+import java.io.Serializable;
 
-@RegisterForReflection
-public class Pet {
+public class PetRecord implements Serializable {
 
     private String id;
     private String name;
     private String birthday;
     private String type;
-
-    public Pet() {
-    }
-
-    public Pet(String id, String name, String type, String birthday) {
-        this.id = id;
-        this.name = name;
-        this.type = type;
-        this.birthday = birthday;
-    }
+    private String medicalRecord;
 
     public String getId() {
         return id;
@@ -50,5 +40,13 @@ public class Pet {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getMedicalRecord() {
+        return this.medicalRecord;
+    }
+
+    public void setMedicalRecord(String medicalRecord) {
+        this.medicalRecord = medicalRecord;
     }
 }
