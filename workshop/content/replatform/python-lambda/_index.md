@@ -20,12 +20,16 @@ It will report a package size of **666 bytes** (112 KB uncompressed).
 To deploy the application, run the following command. It also exports the service endpoint url and the function ARN as environment variables for easy access:
 
 ```bash
-sam package --template-file lab-1-replatform/python-lambda/template.yaml \
-    --output-template-file lab-1-replatform/python-lambda/packaged.yaml \
-    --s3-bucket $SAM_ARTIFACT_BUCKET
-sam deploy --template-file lab-1-replatform/python-lambda/packaged.yaml \
+sam deploy --template-file lab-1-replatform/python-lambda/template.yaml \
     --stack-name python-lambda \
-    --capabilities CAPABILITY_IAM
+    --capabilities CAPABILITY_IAM \
+    --guided
+```
+
+Follow the instructions and make sure your are chosing the right region.
+Export the service endpoint url and the function ARN as environment variables for easy access:
+
+```bash
 export ENDPOINT=$(aws cloudformation describe-stacks \
     --stack-name python-lambda \
     --query 'Stacks[].Outputs[?OutputKey==`PetsApiServiceURL`].OutputValue' \

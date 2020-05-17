@@ -60,15 +60,19 @@ CreatePetLambdaHandler.handleRequest(APIGatewayV2ProxyRequestEvent,Context) : 15
 
 ## Deploy The Application
 
-To deploy the application, run the following command. It also exports the service endpoint url and the function ARN as environment variables for easy access:
+To deploy the application, run the following command. 
 
 ```bash
-sam package --template-file lab-1-replatform/dagger2-lambda/template.yaml \
-    --output-template-file lab-1-replatform/dagger2-lambda/packaged.yaml \
-    --s3-bucket $SAM_ARTIFACT_BUCKET
-sam deploy --template-file lab-1-replatform/dagger2-lambda/packaged.yaml \
+sam deploy --template-file lab-1-replatform/dagger2-lambda/template.yaml \
     --stack-name dagger2-lambda \
-    --capabilities CAPABILITY_IAM
+    --capabilities CAPABILITY_IAM \
+    --guided
+```
+
+Follow the instructions and make sure your are chosing the right region.
+Export the service endpoint url and the function ARN as environment variables for easy access:
+
+```bash
 export ENDPOINT=$(aws cloudformation describe-stacks \
     --stack-name dagger2-lambda \
     --query 'Stacks[].Outputs[?OutputKey==`PetsApiServiceURL`].OutputValue' \

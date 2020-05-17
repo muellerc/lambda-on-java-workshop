@@ -39,12 +39,16 @@ To deploy the application, run the following command. It also exports the servic
 
 ```bash
 cd ~/environment/lambda-on-java-workshop/labs
-sam package --template-file lab-1-replatform/springboot2-fargate/template.yaml \
-    --output-template-file lab-1-replatform/springboot2-fargate/packaged.yaml \
-    --s3-bucket $SAM_ARTIFACT_BUCKET
-sam deploy --template-file lab-1-replatform/springboot2-fargate/packaged.yaml \
+sam deploy --template-file lab-1-replatform/springboot2-fargate/template.yaml \
     --stack-name springboot2-fargate \
-    --capabilities CAPABILITY_IAM
+    --capabilities CAPABILITY_IAM \
+    --guided
+```
+
+Follow the instructions and make sure your are chosing the right region.
+Export the service endpoint url and the function ARN as environment variables for easy access:
+
+```bash
 export ENDPOINT=$(aws cloudformation describe-stacks \
     --stack-name springboot2-fargate \
     --query 'Stacks[].Outputs[?OutputKey==`PetsApiServiceURL`].OutputValue' \
