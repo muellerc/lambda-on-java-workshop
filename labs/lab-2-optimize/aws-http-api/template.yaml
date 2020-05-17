@@ -1,0 +1,47 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Globals:
+  Api:
+    EndpointConfiguration: REGIONAL
+    TracingEnabled: True
+
+Resources:
+  CreatePetLambdaHandlerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.aws.samples.petclinic.CreatePetLambdaHandler::handleRequest
+      Runtime: java8
+      CodeUri: target/app.jar
+      MemorySize: 2048
+      Environment:
+        Variables:
+          TABLE_NAME: !ImportValue PetsTable
+          BUCKET_NAME: !ImportValue PetsBucket
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !ImportValue PetsTable
+        - S3CrudPolicy:
+            BucketName: !ImportValue PetsBucket
+      Timeout: 30
+      Tracing: Active
+      Events:
+        PetResource:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HttpApi
+            Path: /pet
+            Method: post
+
+  HttpApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      StageName: Prod
+
+Outputs:
+  PetsApiServiceURL:
+    Description: URL for application
+    Value: !Sub 'https://${HttpApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}/Prod'
+  CreatePetLambdaHandlerFunction:
+    Description: The ARN for our CreatePetLambdaHandler function
+    Value: !GetAtt CreatePetLambdaHandlerFunction.Arn

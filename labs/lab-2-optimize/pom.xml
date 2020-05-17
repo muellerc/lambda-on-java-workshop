@@ -26,6 +26,7 @@
         <module>application-load-balancer</module>
         <module>multithreading</module>
         <module>optimized-singlethreaded</module>
+        <module>aws-http-api</module>
         <module>optimized</module>
     </modules>
 </project>
