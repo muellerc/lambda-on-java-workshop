@@ -8,15 +8,15 @@
     <includeBaseDirectory>false</includeBaseDirectory>
     <files>
         <file>
-            <source>src/main/config/bootstrap</source>
+            <source>${project.build.directory}${file.separator}${artifactId}-${version}-runner</source>
             <outputDirectory>${file.separator}</outputDirectory>
-            <destName>bootstrap</destName>
+            <destName>runner </destName>
             <fileMode>755</fileMode>
         </file>
         <file>
-            <source>${project.build.directory}${file.separator}server</source>
-            <outputDirectory>/</outputDirectory>
-            <destName>runner</destName>
+            <source>src/main/config/bootstrap</source>
+            <outputDirectory>${file.separator}</outputDirectory>
+            <destName>bootstrap</destName>
             <fileMode>755</fileMode>
         </file>
         <file>

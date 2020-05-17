@@ -13,6 +13,11 @@
     <artifactId>graalvm</artifactId>
     <packaging>jar</packaging>
 
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.graalvm.sdk</groupId>
@@ -127,7 +132,7 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>make-assembly</id>
+                        <id>zip-assembly</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>

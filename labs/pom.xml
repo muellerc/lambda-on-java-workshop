@@ -14,13 +14,13 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <aws.java.sdkv1.version>1.11.683</aws.java.sdkv1.version>
-        <aws.java.sdkv2.version>2.10.25</aws.java.sdkv2.version>
-        <com.amazonaws.aws-lambda-java-core.version>1.2.0</com.amazonaws.aws-lambda-java-core.version>
-        <com.amazonaws.aws-lambda-java-events.version>2.2.7</com.amazonaws.aws-lambda-java-events.version>
-        <com.amazonaws.aws-xray-recorder-sdk.version>2.3.0</com.amazonaws.aws-xray-recorder-sdk.version>
+        <aws.java.sdkv1.version>1.11.784</aws.java.sdkv1.version>
+        <aws.java.sdkv2.version>2.13.18</aws.java.sdkv2.version>
+        <com.amazonaws.aws-lambda-java-core.version>1.2.1</com.amazonaws.aws-lambda-java-core.version>
+        <com.amazonaws.aws-lambda-java-events.version>2.2.9</com.amazonaws.aws-lambda-java-events.version>
+        <com.amazonaws.aws-xray-recorder-sdk.version>2.5.0</com.amazonaws.aws-xray-recorder-sdk.version>
         <com.fasterxml.jackson.version>2.10.0</com.fasterxml.jackson.version>
-        <graalvm.version>19.3.0</graalvm.version>
+        <graalvm.version>20.0.0</graalvm.version>
         <org.slf4j.version>1.7.28</org.slf4j.version>
     </properties>
 

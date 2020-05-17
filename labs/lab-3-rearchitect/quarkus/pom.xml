@@ -13,12 +13,18 @@
     <artifactId>quarkus</artifactId>
     <packaging>jar</packaging>
 
+    <properties>
+        <quarkus.version>1.2.1.Final</quarkus.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>io.quarkus</groupId>
                 <artifactId>quarkus-bom</artifactId>
-                <version>1.0.1.Final</version>
+                <version>${quarkus.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -32,41 +38,19 @@
         </dependency>
 
         <dependency>
-            <groupId>software.amazon.awssdk</groupId>
-            <artifactId>dynamodb</artifactId>
-            <version>${aws.java.sdkv2.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>apache-client</artifactId>
-                    <groupId>software.amazon.awssdk</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>netty-nio-client</artifactId>
-                    <groupId>software.amazon.awssdk</groupId>
-                </exclusion>
-            </exclusions>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-amazon-dynamodb</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>software.amazon.awssdk</groupId>
-            <artifactId>s3</artifactId>
-            <version>${aws.java.sdkv2.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>apache-client</artifactId>
-                    <groupId>software.amazon.awssdk</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>netty-nio-client</artifactId>
-                    <groupId>software.amazon.awssdk</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+        <!-- <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-amazon-s3</artifactId>
+        </dependency> -->
 
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>url-connection-client</artifactId>
-            <version>${aws.java.sdkv2.version}</version>
+            <!-- <version>${aws.java.sdkv2.version}</version> -->
         </dependency>
 
         <dependency>
@@ -85,56 +69,30 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-            </plugin>
-
-<!--            <plugin>-->
-<!--                <groupId>io.quarkus</groupId>-->
-<!--                <artifactId>quarkus-maven-plugin</artifactId>-->
-<!--                <version>1.0.1.Final</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <goals>-->
-<!--                            <goal>native-image</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            <enableHttpUrlHandler>true</enableHttpUrlHandler>-->
-<!--                            <enableHttpsUrlHandler>true</enableHttpsUrlHandler>-->
-<!--                            <additionalBuildArgs>&#45;&#45;initialize-at-run-time=javax.net.ssl.HttpsURLConnection</additionalBuildArgs>-->
-<!--                            <enableAllSecurityServices>true</enableAllSecurityServices>-->
-<!--                            <enableJni>true</enableJni>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
-
-            <plugin>
-                <groupId>org.graalvm.nativeimage</groupId>
-                <artifactId>native-image-maven-plugin</artifactId>
-                <version>${graalvm.version}</version>
+                <groupId>io.quarkus</groupId>
+                <artifactId>quarkus-maven-plugin</artifactId>
+                <version>${quarkus.version}</version>
                 <executions>
                     <execution>
                         <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>native-image</id>
+                        <goals>
                             <goal>native-image</goal>
                         </goals>
-                        <phase>package</phase>
+                        <configuration>
+                            <enableHttpUrlHandler>true</enableHttpUrlHandler>
+                        </configuration>
                     </execution>
                 </executions>
-                <configuration>
-                    <skip>false</skip>
-                    <imageName>${project.artifactId}-${project.version}-runner</imageName>
-                    <buildArgs>
-                        --no-fallback --no-server -H:EnableURLProtocols=http,https --initialize-at-build-time=com.fasterxml.jackson.annotation.JsonProperty$Access -H:-UseServiceLoaderFeature -H:-AddAllCharsets -H:+ReportExceptionStackTraces -J-Djava.util.logging.manager=org.jboss.logmanager.LogManager  --initialize-at-run-time=org.wildfly.common.net.CidrAddress  -H:+TraceClassInitialization
-                    </buildArgs>
-                </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>3.2.0</version>
                 <executions>
                     <execution>
                         <id>zip-assembly</id>
@@ -145,7 +103,7 @@
                         <configuration>
                             <finalName>function</finalName>
                             <descriptors>
-                                <descriptor>src/assembly/zip.xml</descriptor>
+                                <descriptor>src/assembly/assembly.xml</descriptor>
                             </descriptors>
                             <attach>false</attach>
                             <appendAssemblyId>false</appendAssemblyId>

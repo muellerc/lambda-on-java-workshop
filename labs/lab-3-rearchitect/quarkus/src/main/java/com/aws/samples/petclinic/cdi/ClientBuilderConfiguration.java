@@ -15,6 +15,8 @@ import javax.enterprise.inject.Produces;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import io.quarkus.arc.DefaultBean;
+
 @Dependent
 public class ClientBuilderConfiguration {
 
@@ -33,7 +35,7 @@ public class ClientBuilderConfiguration {
         return UrlConnectionHttpClient.builder().build();
     }
 
-    @Produces
+    @Produces @DefaultBean
     public DynamoDbClient buildDynamoDbClient(Region region, AwsCredentialsProvider credentialsProvider, SdkHttpClient sdkHttpClient) throws URISyntaxException {
         return DynamoDbClient.builder()
                 .httpClient(sdkHttpClient)
