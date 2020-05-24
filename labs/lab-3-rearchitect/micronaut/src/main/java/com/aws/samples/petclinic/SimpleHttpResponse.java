@@ -1,0 +1,45 @@
+package com.aws.samples.petclinic;
+
+import java.util.List;
+import java.util.Map;
+
+public class SimpleHttpResponse {
+
+    private Integer responseCode;
+    private Map<String, List<String>> headers;
+    private String body;
+
+
+    public SimpleHttpResponse(Integer responseCode, Map<String, List<String>> headers, String body) {
+        this.responseCode = responseCode;
+        this.headers = headers;
+        this.body = body;
+    }
+
+    public Integer getResponseCode() {
+        return responseCode;
+    }
+
+    public Map<String, List<String>> getHeaders() {
+        return headers;
+    }
+
+    public String getHeader(String headerName) {
+        List<String> values = headers.get(headerName);
+        return String.join(",", values);
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    @Override
+    public String toString() {
+        return "SimpleHttpResponse{" +
+                "responseCode=" + responseCode +
+                ", headers=" + headers +
+                ", body='" + body + '\'' +
+                '}';
+    }
+}
+

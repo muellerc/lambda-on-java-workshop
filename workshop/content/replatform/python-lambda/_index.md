@@ -13,7 +13,7 @@ cd ~/environment/lambda-on-java-workshop/labs
 ls -lh lab-1-replatform/python-lambda/.aws-sam/build/CreatePetLambdaHandlerFunction
 ```
 
-It will report a package size of **666 bytes** (112 KB uncompressed).
+It will report a package size of **1,1 KB** (116 KB uncompressed).
 
 ## Deploy The Application
 
@@ -42,7 +42,7 @@ export FUNCTION_ARN=$(aws cloudformation describe-stacks \
 
 ## Memory Configuration
 
-We choose to go with 1024 MB for the load and performance tests.
+We choose to go with 256 MB for the load and performance tests.
 
 {{< figure src="python-lambda/power-tuning.png" >}}
 
@@ -50,13 +50,13 @@ We choose to go with 1024 MB for the load and performance tests.
 
 ```bash
 export JAVA_OPTS="-DBASE_URL=$ENDPOINT"
-for i in {1..10}; do aws lambda update-function-configuration --function-name $FUNCTION_ARN --environment "Variables={TABLE_NAME=$PETS_TABLE,BUCKET_NAME=$PETS_BUCKET,KeyName1=KeyValue$i}"; gatling.sh --simulations-folder lab-1-replatform/python-lambda/src/test/scala --simulation LoadTest --run-description "python-lambda-run-$i"; done
+for i in {1..10}; do aws lambda update-function-configuration --function-name $FUNCTION_ARN --environment "Variables={TABLE_NAME=$TABLE_NAME,BUCKET_NAME=$BUCKET_NAME,KeyName1=KeyValue$i}"; gatling.sh --simulations-folder lab-1-replatform/python-lambda/src/test/scala --simulation LoadTest --run-description "python-lambda-run-$i"; done
 ```
 
 ## Run the Cold-Start Tests
 
 ```bash
-for i in {1..10}; do aws lambda update-function-configuration --function-name $FUNCTION_ARN --environment "Variables={TABLE_NAME=$PETS_TABLE,BUCKET_NAME=$PETS_BUCKET,KeyName1=KeyValue$i}"; curl -i -X POST -d '{"name": "Max", "type": "dog", "birthday": "2010-11-03", "medicalRecord": "bla bla bla"}' $ENDPOINT/pet; done
+for i in {1..10}; do aws lambda update-function-configuration --function-name $FUNCTION_ARN --environment "Variables={TABLE_NAME=$TABLE_NAME,BUCKET_NAME=$BUCKET_NAME,KeyName1=KeyValue$i}"; curl -i -X POST -d '{"name": "Max", "type": "dog", "birthday": "2010-11-03", "medicalRecord": "bla bla bla"}' $ENDPOINT/pet; done
 ```
 
 ## Result Overview
