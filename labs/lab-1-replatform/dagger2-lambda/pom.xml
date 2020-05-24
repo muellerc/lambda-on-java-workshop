@@ -4,27 +4,37 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>com.aws.samples.java.lambda.labs</groupId>
-        <artifactId>lab-1-replatform</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-    </parent>
-
     <groupId>com.aws.samples.java.lambda.labs.lab-1-replatform</groupId>
     <artifactId>dagger2-lambda</artifactId>
     <packaging>jar</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <com.google.dagger.version>2.27</com.google.dagger.version>
+        <com.google.code.findbugs.jsr305.version>3.0.2</com.google.code.findbugs.jsr305.version>
+        <aws.java.sdkv1.version>1.11.789</aws.java.sdkv1.version>
+        <com.amazonaws.aws-lambda-java-core.version>1.2.1</com.amazonaws.aws-lambda-java-core.version>
+        <com.amazonaws.aws-lambda-java-events.version>3.1.0</com.amazonaws.aws-lambda-java-events.version>
+        <com.amazonaws.aws-xray-recorder-sdk.version>2.5.0</com.amazonaws.aws-xray-recorder-sdk.version>
+        <org.slf4j.version>1.7.28</org.slf4j.version>
+    </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.google.dagger</groupId>
             <artifactId>dagger</artifactId>
-            <version>2.25.2</version>
+            <version>${com.google.dagger.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.google.code.findbugs</groupId>
             <artifactId>jsr305</artifactId>
-            <version>3.0.2</version>
+            <version>${com.google.code.findbugs.jsr305.version}</version>
         </dependency>
 
         <dependency>
