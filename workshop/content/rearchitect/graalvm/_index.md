@@ -13,11 +13,11 @@ cd ~/environment/lambda-on-java-workshop/labs
 ls -lh lab-3-rearchitect/graalvm/target/function.zip
 ```
 
-It will report a package size of **9,3 MB**.
+It will report a package size of **14,0 MB**.
 
 ## Deploy The Application
 
-To deploy the application, run the following command. It also exports the service endpoint url and the function ARN as environment variables for easy access:
+To deploy the application, run the following command:
 
 ```bash
 sam deploy --template-file lab-3-rearchitect/graalvm/template.yaml \
@@ -42,19 +42,21 @@ export FUNCTION_ARN=$(aws cloudformation describe-stacks \
 
 ## Memory Configuration
 
-TODO
+We choose to go with 512 MB for the load and performance tests.
+
+{{< figure src="graalvm/power-tuning.png" >}}
 
 ## Run The Load Tests
 
 ```bash
 export JAVA_OPTS="-DBASE_URL=$ENDPOINT"
-for i in {1..10}; do aws lambda update-function-configuration --function-name $FUNCTION_ARN --environment "Variables={TABLE_NAME=$PETS_TABLE,BUCKET_NAME=$PETS_BUCKET,KeyName1=KeyValue$i}"; gatling.sh --simulations-folder lab-3-rearchitect/graalvm/src/test/scala --simulation LoadTest --run-description "graalvm-run-$i"; done
+for i in {1..10}; do aws lambda update-function-configuration --function-name $FUNCTION_ARN --environment "Variables={DISABLE_SIGNAL_HANDLERS=true,TABLE_NAME=$TABLE_NAME,BUCKET_NAME=$BUCKET_NAME,KeyName1=KeyValue$i}"; gatling.sh --simulations-folder lab-3-rearchitect/graalvm/src/test/scala --simulation LoadTest --run-description "graalvm-run-$i"; done
 ```
 
 ## Run the Cold-Start Tests
 
 ```bash
-for i in {1..10}; do aws lambda update-function-configuration --function-name $FUNCTION_ARN --environment "Variables={TABLE_NAME=$PETS_TABLE,BUCKET_NAME=$PETS_BUCKET,KeyName1=KeyValue$i}"; curl -i -X POST -d '{"name": "Max", "type": "dog", "birthday": "2010-11-03", "medicalRecord": "bla bla bla"}' $ENDPOINT/pet; done
+for i in {1..10}; do aws lambda update-function-configuration --function-name $FUNCTION_ARN --environment "Variables={DISABLE_SIGNAL_HANDLERS=true,TABLE_NAME=$TABLE_NAME,BUCKET_NAME=$BUCKET_NAME,KeyName1=KeyValue$i}"; curl -i -X POST -d '{"name": "Max", "type": "dog", "birthday": "2010-11-03", "medicalRecord": "bla bla bla"}' $ENDPOINT/pet; done
 ```
 
 ## Result Overview

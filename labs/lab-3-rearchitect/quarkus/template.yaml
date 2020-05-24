@@ -13,7 +13,7 @@ Resources:
       Handler: does.not::matter
       Runtime: provided
       CodeUri: target/function.zip
-      MemorySize: 2048
+      MemorySize: 512
       Environment:
         Variables:
           DISABLE_SIGNAL_HANDLERS: true

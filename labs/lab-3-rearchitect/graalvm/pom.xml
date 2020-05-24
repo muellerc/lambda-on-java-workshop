@@ -14,9 +14,9 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
 
-        <aws.java.sdkv2.version>2.13.18</aws.java.sdkv2.version>
+        <aws.java.sdkv2.version>2.13.23</aws.java.sdkv2.version>
         <com.amazonaws.aws-lambda-java-core.version>1.2.1</com.amazonaws.aws-lambda-java-core.version>
-        <com.fasterxml.jackson.version>2.10.0</com.fasterxml.jackson.version>
+        <com.fasterxml.jackson.version>2.10.4</com.fasterxml.jackson.version>
         <org.slf4j.version>1.7.28</org.slf4j.version>
         <graalvm.version>20.0.0</graalvm.version>
     </properties>
