@@ -1,8 +1,5 @@
 package com.aws.samples.petclinic.pet;
 
-import io.quarkus.runtime.annotations.RegisterForReflection;
-
-@RegisterForReflection
 public class Pet {
 
     private String id;

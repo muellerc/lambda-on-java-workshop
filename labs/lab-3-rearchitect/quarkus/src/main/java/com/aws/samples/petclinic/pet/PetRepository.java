@@ -40,10 +40,6 @@ public class PetRepository {
         return pets;
     }
 
-    public Optional<Pet> findById(String id) {
-        return null;
-    }
-
     public Pet save(Pet pet) {
         pet.setId(UUID.randomUUID().toString());
 
@@ -53,10 +49,6 @@ public class PetRepository {
                 .build());
 
         return pet;
-    }
-
-    public void delete(Pet pet) {
-
     }
 
     private Pet fromItem(Map<String, AttributeValue> item) {

@@ -3,20 +3,21 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>com.aws.samples.java.lambda.labs</groupId>
-        <artifactId>lab-3-rearchitect</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-    </parent>
-
     <groupId>com.aws.samples.java.lambda.labs.lab-3-rearchitect</groupId>
     <artifactId>quarkus</artifactId>
     <packaging>jar</packaging>
+    <version>1.0.0-SNAPSHOT</version>
 
     <properties>
-        <quarkus.version>1.2.1.Final</quarkus.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+
+        <quarkus.version>1.3.3.Final</quarkus.version>
+        <aws.java.sdkv2.version>2.10.70</aws.java.sdkv2.version> <!-- the version quarkus is using -->
+        <org.slf4j.version>1.7.28</org.slf4j.version>
+        <com.amazonaws.aws-lambda-java-events.version>2.2.9</com.amazonaws.aws-lambda-java-events.version>
     </properties>
 
     <dependencyManagement>
@@ -38,20 +39,40 @@
         </dependency>
 
         <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-amazon-dynamodb</artifactId>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>dynamodb</artifactId>
+            <version>${aws.java.sdkv2.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>software.amazon.awssdk</groupId>
+                    <artifactId>apache-client</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>software.amazon.awssdk</groupId>
+                    <artifactId>netty-nio-client</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>s3</artifactId>
             <version>${aws.java.sdkv2.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>software.amazon.awssdk</groupId>
+                    <artifactId>apache-client</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>software.amazon.awssdk</groupId>
+                    <artifactId>netty-nio-client</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>url-connection-client</artifactId>
-            <!-- <version>${aws.java.sdkv2.version}</version> -->
         </dependency>
 
         <dependency>
