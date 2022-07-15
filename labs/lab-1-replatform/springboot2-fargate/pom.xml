@@ -21,7 +21,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <aws.java.sdkv1.version>1.11.659</aws.java.sdkv1.version>
+        <aws.java.sdkv1.version>1.12.261</aws.java.sdkv1.version>
     </properties>
 
     <dependencies>
